@@ -1,4 +1,4 @@
-function Month({ handleClick }) {
+function MonthQuestion({ handleClick }) {
 	return (
 		<div className="tracker__Month-container mb-4 bg-slate-100 p-4 pb-6">
 			<p className="text-lg mb-2 font-bold">Step 1:</p>
@@ -19,4 +19,4 @@ function Month({ handleClick }) {
 	);
 }
 
-export default Month;
+export default MonthQuestion;

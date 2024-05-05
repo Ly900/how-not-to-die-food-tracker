@@ -1,4 +1,4 @@
-function Start({ handleClick }) {
+function StartQuestion({ handleClick }) {
 	return (
 		<div className="tracker__step0-container">
 			<button
@@ -11,4 +11,4 @@ function Start({ handleClick }) {
 	);
 }
 
-export default Start;
+export default StartQuestion;
