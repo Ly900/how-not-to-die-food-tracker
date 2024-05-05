@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Header from './components/Header';
+import Step1 from './components/Step1';
 
 import './App.scss';
 
@@ -35,16 +36,7 @@ function App() {
 			{/* Step 0 */}
 
 			<div className="tracker__questions mb-6">
-				{step === 'start' && (
-					<div className="tracker__step0-container">
-						<button
-							className="mb-3 inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded transition-colors text-lg antialiased font-medium uppercase"
-							onClick={() => handleStartClick('start')}
-						>
-							Start
-						</button>
-					</div>
-				)}
+				{step === 'start' && <Step1 handleClick={handleStartClick} />}
 
 				{step === 'step1' && (
 					<div className="tracker__step1-container mb-4 bg-slate-100 p-4 pb-6">
