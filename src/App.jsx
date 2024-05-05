@@ -34,7 +34,7 @@ function App() {
 
 			{/* Step 0 */}
 
-			<div className="tracker__options mb-6">
+			<div className="tracker__questions mb-6">
 				{step === 'start' && (
 					<div className="tracker__step0-container">
 						<button
