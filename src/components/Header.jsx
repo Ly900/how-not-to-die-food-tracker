@@ -9,7 +9,7 @@ function Header() {
 			<p className="mb-3 text-2xl">
 				Use this app to track your monthly intake of healthy foods.
 			</p>
-			<img src="../src/assets/broccoli.svg" className="mb-5" />
+			<img src="../src/assets/broccoli.svg" className="mb-8" />
 		</header>
 	);
 }
