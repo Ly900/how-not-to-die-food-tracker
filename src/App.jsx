@@ -14,22 +14,18 @@ function App() {
 
 	function handleStartClick() {
 		setStep('month');
-		console.log(step);
 	}
 
 	function handleMonthClick(e) {
 		e.preventDefault();
-		console.log(step);
 		const form = e.target;
 		const formData = new FormData(form);
 		const formJson = Object.fromEntries(formData.entries());
-		console.log('formJson: ', formJson);
 		setMonth(formJson.month);
 		setStep('foodsList');
 	}
 
 	function handleFoodsListClick() {
-		console.log(step);
 		setFoodsList('Recommended');
 		setStep('showRecommended');
 	}
