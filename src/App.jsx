@@ -50,7 +50,7 @@ function App() {
 			</div>
 
 			{step !== 'start' && (
-				<div className="tracker__settings">
+				<div className="tracker__user-settings">
 					<p className="font-bold">
 						<span className="text-4xl">Month:</span>
 						<span className="text-green-600 text-4xl"> {month}</span>
