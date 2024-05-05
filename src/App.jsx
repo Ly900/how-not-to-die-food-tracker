@@ -23,7 +23,7 @@ function App() {
 				<p className="text-lg mb-2 font-bold">Step 1:</p>
 				<p className="text-lg mb-2">What month do you want to track?</p>
 				<form>
-					<label for="email" class="lu avz awd awo axu hidden">
+					<label htmlFor="email" className="lu avz awd awo axu hidden">
 						Month:
 					</label>
 					<input
