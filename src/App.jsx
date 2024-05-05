@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Header from './components/Header';
-import Month from './components/Step0';
+import Start from './components/Start';
 import Step1 from './components/Month';
 
 import './App.scss';
@@ -37,7 +37,7 @@ function App() {
 			{/* Step 0 */}
 
 			<div className="tracker__questions mb-6">
-				{step === 'start' && <Month handleClick={handleStartClick} />}
+				{step === 'start' && <Start handleClick={handleStartClick} />}
 
 				{step === 'step1' && (
 					// <div className="tracker__step1-container mb-4 bg-slate-100 p-4 pb-6">
