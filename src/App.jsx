@@ -13,10 +13,13 @@ function App() {
 		console.log(step);
 	}
 
-	function handleStep1Click() {
+	function handleStep1MonthClick(e) {
 		setStep('step2');
 		console.log(step);
-		setMonth('May');
+		const form = e.target;
+		const formData = new FormData(form);
+		const formJson = Object.fromEntries(formData.entries());
+		setMonth(formJson.month);
 	}
 
 	function handleStep2Click() {
@@ -47,8 +50,8 @@ function App() {
 					<div className="tracker__step1-container mb-4 bg-slate-100 p-4 pb-6">
 						<p className="text-lg mb-2 font-bold">Step 1:</p>
 						<p className="text-lg mb-2">What month do you want to track?</p>
-						<form onSubmit={handleStep1Click}>
-							<label htmlFor="email" className="lu avz awd awo axu hidden">
+						<form onSubmit={handleStep1MonthClick}>
+							<label htmlFor="month" className="lu avz awd awo axu hidden">
 								Month:
 							</label>
 							<input
