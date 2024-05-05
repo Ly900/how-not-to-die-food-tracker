@@ -26,9 +26,9 @@ function App() {
 					Month:
 				</label>
 				<input
-					type="email"
-					name="email"
-					id="email"
+					type="text"
+					name="month"
+					id="month"
 					className="text-center"
 					placeholder="May"
 				/>
