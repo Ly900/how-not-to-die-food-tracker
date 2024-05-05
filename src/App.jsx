@@ -12,12 +12,12 @@ function App() {
 	const [step, setStep] = useState('start');
 
 	function handleStartClick() {
-		setStep('step1');
+		setStep('month');
 		console.log(step);
 	}
 
 	function handleMonthClick(e) {
-		setStep('step2');
+		setStep('foodsList');
 		console.log(step);
 		const form = e.target;
 		const formData = new FormData(form);
@@ -26,7 +26,7 @@ function App() {
 	}
 
 	function handleFoodsListClick() {
-		setStep('step3');
+		setStep('showRecommended');
 		console.log(step);
 		setFoodsList('Recommended');
 	}
@@ -40,9 +40,9 @@ function App() {
 			<div className="tracker__questions mb-6">
 				{step === 'start' && <StartQuestion handleClick={handleStartClick} />}
 
-				{step === 'step1' && <MonthQuestion handleClick={handleMonthClick} />}
+				{step === 'month' && <MonthQuestion handleClick={handleMonthClick} />}
 
-				{step === 'step2' && (
+				{step === 'foodsList' && (
 					<FoodsListQuestion handleClick={handleFoodsListClick} />
 				)}
 			</div>
