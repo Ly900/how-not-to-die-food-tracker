@@ -18,17 +18,19 @@ function App() {
 
 	function handleMonthClick(e) {
 		e.preventDefault();
-		setStep('foodsList');
 		console.log(step);
 		const form = e.target;
 		const formData = new FormData(form);
+		const formJson = Object.fromEntries(formData.entries());
+		console.log('formJson: ', formJson);
 		setMonth(formJson.month);
+		setStep('foodsList');
 	}
 
 	function handleFoodsListClick() {
-		setStep('showRecommended');
 		console.log(step);
 		setFoodsList('Recommended');
+		setStep('showRecommended');
 	}
 
 	return (
