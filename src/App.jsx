@@ -53,12 +53,25 @@ function App() {
 				<UserSettings month={month} foodsList={foodsList} />
 			)}
 
-			<div className="tracker__daily-dozen p-3">
+			<div className="tracker__food-container p-3">
 				{step === 'trackFoods' &&
 					dailyDozenArr.map((food) => {
 						return (
-							<div key={food}>
-								<span>{food}</span>
+							<div key={food} className="tracker__food border-b-2 mb-2">
+								<div className="tracker__food-buttons">
+									<button className="inline-block bg-green-500 hover:bg-green-700 text-white py-1/2 px-1 rounded transition-colors text-base antialiased font-medium uppercase mr-2">
+										Add
+									</button>
+									<button className="inline-block bg-slate-500 hover:bg-slate-700 text-white py-1/2 px-1 rounded transition-colors text-base antialiased font-medium uppercase">
+										Remove
+									</button>
+								</div>
+								<div className="tracker__food-name-wrapper">
+									<span className="tracker__food-name mr-2 text-right text-base">
+										{food}
+									</span>
+								</div>
+								<div>&#x2713;</div>
 							</div>
 						);
 					})}

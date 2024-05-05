@@ -7,10 +7,23 @@
 }
 
 .tracker {
+	$medium: 720px;
 	&__questions {
 		/* height: 500px; */
 	}
 	&__user-settings {
 		font-family: 'Boogaloo', sans-serif;
+	}
+	&__food {
+		@media screen and (min-width: $medium) {
+			display: grid;
+			grid-template-columns: max-content 1.2fr 3fr;
+			grid-column-gap: 0.5em;
+		}
+	}
+	&__food-name {
+		@media screen and (min-width: $medium) {
+			font-size: 14px;
+		}
 	}
 }
