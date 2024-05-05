@@ -22,7 +22,6 @@ function App() {
 		console.log(step);
 		const form = e.target;
 		const formData = new FormData(form);
-		const formJson = Object.fromEntries(formData.entries());
 		setMonth(formJson.month);
 	}
 
