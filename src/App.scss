@@ -17,13 +17,13 @@
 	&__food {
 		@media screen and (min-width: $medium) {
 			display: grid;
-			grid-template-columns: max-content 1.2fr 3fr;
+			grid-template-columns: max-content 1fr 3fr;
 			grid-column-gap: 0.5em;
 		}
 	}
 	&__food-name {
 		@media screen and (min-width: $medium) {
-			font-size: 14px;
+			// font-size: 14px;
 		}
 	}
 }
