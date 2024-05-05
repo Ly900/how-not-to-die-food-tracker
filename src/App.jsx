@@ -15,7 +15,7 @@ function App() {
 		console.log(step);
 	}
 
-	function handleStep1MonthClick(e) {
+	function handleMonthClick(e) {
 		setStep('step2');
 		console.log(step);
 		const form = e.target;
@@ -39,7 +39,7 @@ function App() {
 			<div className="tracker__questions mb-6">
 				{step === 'start' && <Start handleClick={handleStartClick} />}
 
-				{step === 'step1' && <Month handleClick={handleStep1MonthClick} />}
+				{step === 'step1' && <Month handleClick={handleMonthClick} />}
 
 				{step === 'step2' && (
 					<div className="tracker__step2-container bg-slate-100 p-4 pb-6">
