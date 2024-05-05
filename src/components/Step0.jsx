@@ -1,4 +1,4 @@
-function Step1({ handleClick }) {
+function Step0({ handleClick }) {
 	return (
 		<div className="tracker__step0-container">
 			<button
@@ -11,4 +11,4 @@ function Step1({ handleClick }) {
 	);
 }
 
-export default Step1;
+export default Step0;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Header from './components/Header';
-import Step1 from './components/Step1';
+import Step0 from './components/Step0';
 
 import './App.scss';
 
@@ -36,7 +36,7 @@ function App() {
 			{/* Step 0 */}
 
 			<div className="tracker__questions mb-6">
-				{step === 'start' && <Step1 handleClick={handleStartClick} />}
+				{step === 'start' && <Step0 handleClick={handleStartClick} />}
 
 				{step === 'step1' && (
 					<div className="tracker__step1-container mb-4 bg-slate-100 p-4 pb-6">
