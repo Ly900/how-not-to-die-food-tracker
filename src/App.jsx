@@ -3,6 +3,7 @@ import Header from './components/Header';
 import StartQuestion from './components/StartQuestion';
 import MonthQuestion from './components/MonthQuestion';
 import UserSettings from './components/UserSettings';
+import dailyDozen from './assets/dailyDozenFoods.json';
 
 import './App.scss';
 import FoodsListQuestion from './components/FoodsListQuestion';
@@ -26,9 +27,11 @@ function App() {
 	}
 
 	function handleFoodsListClick() {
-		setFoodsList('Recommended');
-		setStep('showRecommended');
+		setFoodsList('Daily Dozen');
+		setStep('trackFoods');
 	}
+
+	const dailyDozenArr = dailyDozen.dailyDozenFoods;
 
 	return (
 		<>
@@ -36,7 +39,7 @@ function App() {
 
 			{/* Step 0 */}
 
-			<div className="tracker__questions mb-6">
+			<div className="tracker__questions mb-6 text-center">
 				{step === 'start' && <StartQuestion handleClick={handleStartClick} />}
 
 				{step === 'month' && <MonthQuestion handleClick={handleMonthClick} />}
@@ -46,7 +49,20 @@ function App() {
 				)}
 			</div>
 
-			{step !== 'start' && <UserSettings month={month} foodsList={foodsList} />}
+			{step === 'trackFoods' && (
+				<UserSettings month={month} foodsList={foodsList} />
+			)}
+
+			<div className="tracker__daily-dozen p-3">
+				{step === 'trackFoods' &&
+					dailyDozenArr.map((food) => {
+						return (
+							<div key={food}>
+								<span>{food}</span>
+							</div>
+						);
+					})}
+			</div>
 		</>
 	);
 }
