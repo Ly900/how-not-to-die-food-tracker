@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Header from './components/Header';
 import Start from './components/Start';
-import Step1 from './components/Month';
+import Month from './components/Month';
 
 import './App.scss';
 
@@ -39,25 +39,7 @@ function App() {
 			<div className="tracker__questions mb-6">
 				{step === 'start' && <Start handleClick={handleStartClick} />}
 
-				{step === 'step1' && (
-					// <div className="tracker__step1-container mb-4 bg-slate-100 p-4 pb-6">
-					// 	<p className="text-lg mb-2 font-bold">Step 1:</p>
-					// 	<p className="text-lg mb-2">What month do you want to track?</p>
-					// 	<form onSubmit={handleStep1MonthClick}>
-					// 		<label htmlFor="month" className="lu avz awd awo axu hidden">
-					// 			Month:
-					// 		</label>
-					// 		<input
-					// 			type="text"
-					// 			name="month"
-					// 			id="month"
-					// 			className="text-center border-b-2 border-lime-600"
-					// 			placeholder="May"
-					// 		/>
-					// 	</form>
-					// </div>
-					<Step1 handleClick={handleStep1MonthClick} />
-				)}
+				{step === 'step1' && <Month handleClick={handleStep1MonthClick} />}
 
 				{step === 'step2' && (
 					<div className="tracker__step2-container bg-slate-100 p-4 pb-6">
