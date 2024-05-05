@@ -17,6 +17,7 @@ function App() {
 	}
 
 	function handleMonthClick(e) {
+		e.preventDefault();
 		setStep('foodsList');
 		console.log(step);
 		const form = e.target;
