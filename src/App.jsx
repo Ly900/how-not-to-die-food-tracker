@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from './components/Header';
 import StartQuestion from './components/StartQuestion';
 import MonthQuestion from './components/MonthQuestion';
+import UserSettings from './components/UserSettings';
 
 import './App.scss';
 import FoodsListQuestion from './components/FoodsListQuestion';
@@ -49,18 +50,7 @@ function App() {
 				)}
 			</div>
 
-			{step !== 'start' && (
-				<div className="tracker__user-settings">
-					<p className="font-bold">
-						<span className="text-4xl">Month:</span>
-						<span className="text-green-600 text-4xl"> {month}</span>
-					</p>
-					<p className="font-bold">
-						<span className="text-4xl">Foods List:</span>
-						<span className="text-green-600 text-4xl"> {foodsList}</span>
-					</p>
-				</div>
-			)}
+			{step !== 'start' && <UserSettings month={month} foodsList={foodsList} />}
 		</>
 	);
 }
