@@ -5,9 +5,15 @@ import './App.css';
 function App() {
 	return (
 		<>
-			<h1 className="text-3xl font-bold text-red-500 text-center">
-				How Not To Die Food Tracker
-			</h1>
+			<header class="flex flex-col items-center">
+				<h1 className="tracker__main-heading font-bold text-center text-5xl mb-2">
+					How Not To Die Food Tracker
+				</h1>
+				<p class="mb-3">
+					Use this app to track your monthly intake of healthy foods.
+				</p>
+				<img src="../src/assets/broccoli.svg" />
+			</header>
 		</>
 	);
 }
