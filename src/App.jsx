@@ -5,6 +5,7 @@ import './App.scss';
 
 function App() {
 	const [month, setMonth] = useState('');
+	const [foodsList, setFoodsList] = useState('');
 	const [step, setStep] = useState('start');
 
 	function handleStartClick() {
@@ -18,13 +19,19 @@ function App() {
 		setMonth('May');
 	}
 
+	function handleStep2Click() {
+		setStep('step3');
+		console.log(step);
+		setFoodsList('Recommended');
+	}
+
 	return (
 		<>
 			<Header />
 
 			{/* Step 0 */}
 
-			<div className="tracker__options">
+			<div className="tracker__options mb-6">
 				{step === 'start' && (
 					<div className="tracker__step0-container">
 						<button
@@ -76,7 +83,18 @@ function App() {
 				)}
 			</div>
 
-			{month}
+			{step !== 'start' && (
+				<div className="tracker__settings">
+					<p className="font-bold">
+						<span className="text-4xl">Month:</span>
+						<span className="text-green-600 text-4xl"> {month}</span>
+					</p>
+					<p className="font-bold">
+						<span className="text-4xl">Foods List:</span>
+						<span className="text-green-600 text-4xl"> {foodsList}</span>
+					</p>
+				</div>
+			)}
 		</>
 	);
 }
