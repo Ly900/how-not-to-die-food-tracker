@@ -10,6 +10,8 @@ function App() {
 	return (
 		<>
 			<Header />
+
+			{/* Step 0 */}
 			<div className="tracker__step0-container mb-4">
 				<button
 					className="mb-3 inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded transition-colors text-lg antialiased font-medium uppercase"
@@ -19,6 +21,7 @@ function App() {
 				</button>
 			</div>
 
+			{/* Step 1 */}
 			<div className="tracker__step1-container mb-4">
 				<p className="text-lg mb-2 font-bold">Step 1:</p>
 				<p className="text-lg mb-2">What month do you want to track?</p>
@@ -36,6 +39,7 @@ function App() {
 				</form>
 			</div>
 
+			{/* Step 2 */}
 			<div className="tracker__step2-container mb-4">
 				<p className="text-lg mb-2 font-bold">Step 2:</p>
 				<p className="text-lg mb-2">
