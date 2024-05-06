@@ -47,10 +47,7 @@ function Food({ food }) {
 					{food}
 				</span>
 			</div>
-			<div className="flex align-middle">
-				{/* <Checkmark /> */}
-				{checkmarks}
-			</div>
+			<div className="flex align-middle flex-wrap">{checkmarks}</div>
 		</div>
 	);
 }
