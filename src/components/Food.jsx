@@ -47,6 +47,11 @@ function Food({ food }) {
 				</span>
 			</div>
 			<div className="flex align-middle flex-wrap">{checkmarks}</div>
+			<div className="">
+				<p className="text-base inline-block align-middle">
+					<strong>Total:</strong> {count}
+				</p>
+			</div>
 		</div>
 	);
 }
