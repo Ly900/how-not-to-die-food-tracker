@@ -59,7 +59,7 @@ function App() {
 			<Header step={step} />
 
 			{step !== 'start' && (
-				<div className="text-center">
+				<div className="text-center mb-2">
 					<button
 						className="mb-3 inline-block bg-slate-500 hover:bg-slate-700 text-white py-2 px-4 rounded transition-colors text-lg antialiased font-medium uppercase"
 						onClick={() => handleStartOverClick()}

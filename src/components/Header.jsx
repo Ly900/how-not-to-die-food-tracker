@@ -9,12 +9,12 @@ function Header({ step }) {
 		>
 			<div className="flex mb-2">
 				<h1
-					className={`tracker__main-heading font-bold text-center text-5xl mb-0`}
+					className={`tracker__main-heading font-bold text-center text-5xl mb-3`}
 				>
 					<i className="text-green-700">How Not To Die</i> Food Tracker
 				</h1>
 			</div>
-			<p className="mb-3 text-2xl text-center w-5/6">
+			<p className="mb-3 text-xl text-center w-5/6 mb-3">
 				Use this app to track your monthly intake of healthy foods.
 			</p>
 			{step !== 'chart' && (

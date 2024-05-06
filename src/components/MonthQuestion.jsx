@@ -11,7 +11,7 @@ function MonthQuestion({ handleClick }) {
 					type="text"
 					name="month"
 					id="month"
-					className="text-center border-b-2 border-lime-600 mr-3"
+					className="text-center border-b-2 border-lime-600 mr-3 mb-3"
 					placeholder="May"
 					required
 				/>
