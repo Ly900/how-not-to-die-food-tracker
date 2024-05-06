@@ -11,12 +11,12 @@ function TrackerInstructions({ food, action }) {
 				</p>
 			</div>
 			<div className="tracker__notifications min-h-10 text-sm sm:text-base">
-				{food && action === 'add' && (
+				{food && action === 'added' && (
 					<p className="text-green-800">
 						Nice! You've added 1 serving of <strong>{food}</strong>.
 					</p>
 				)}
-				{food && action === 'remove' && (
+				{food && action === 'removed' && (
 					<p className="text-red-800">
 						You've removed 1 serving of <strong>{food}</strong>.
 					</p>

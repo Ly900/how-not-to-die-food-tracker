@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 import Header from './components/Header';
 import StartQuestion from './components/StartQuestion';
@@ -17,6 +18,13 @@ function App() {
 	const [step, setStep] = useState('start');
 	const [food, setFood] = useState('');
 	const [action, setAction] = useState(null);
+
+	function srMessage(message) {
+		document.getElementById('alert').append(message);
+		setTimeout(() => {
+			document.getElementById('alert').innerHTML = '';
+		}, 500);
+	}
 
 	function handleStartClick() {
 		setStep('month');
@@ -94,12 +102,14 @@ function App() {
 							<Food
 								key={i}
 								food={food}
+								action={action}
 								onFoodChange={() => {
 									updateFood(food);
 								}}
 								onActionChange={(action) => {
 									handleActionChange(action);
 								}}
+								srMessage={(food, action) => srMessage(food, action)}
 							/>
 						);
 					})}

@@ -1,13 +1,33 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 import Checkmark from './Checkmark';
 
-function Food({ food, onFoodChange, onActionChange }) {
+function Food({ food, onFoodChange, onActionChange, action }) {
 	const [count, setCount] = useState(0);
+
+	const didMount = useRef(false);
+
+	useEffect(() => {
+		if (!didMount.current) {
+			didMount.current = true;
+			return;
+		}
+		console.log(`1 ${food} ${action}`);
+		srMessage(`1 ${food} ${action}`);
+	}, [count]);
+
+	function srMessage(message) {
+		document.getElementById('alert').append(message);
+		setTimeout(() => {
+			document.getElementById('alert').innerHTML = '';
+		}, 500);
+	}
 
 	function handleAddClick() {
 		setCount((count) => count + 1);
 		onFoodChange(food);
-		onActionChange('add');
+		onActionChange('added');
 	}
 
 	function handleRemoveClick() {
@@ -16,7 +36,7 @@ function Food({ food, onFoodChange, onActionChange }) {
 		}
 		setCount((count) => count - 1);
 		onFoodChange(food);
-		onActionChange('remove');
+		onActionChange('removed');
 	}
 
 	function createCheckmarks() {
