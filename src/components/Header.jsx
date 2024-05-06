@@ -18,7 +18,7 @@ function Header({ step }) {
 				Use this app to track your monthly intake of healthy foods.
 			</p>
 			{step !== 'chart' && (
-				<img src="/how-not-to-die/src/assets/broccoli.svg" />
+				<img src="/how-not-to-die-food-tracker/assets/broccoli.svg" />
 			)}
 		</header>
 	);

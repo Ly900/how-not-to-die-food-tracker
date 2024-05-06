@@ -7,7 +7,7 @@ import UserSettings from './components/UserSettings';
 import TrackerInstructions from './components/TrackerInstructions';
 import FoodsListQuestion from './components/FoodsListQuestion';
 import Food from './components/Food';
-import dailyDozen from './assets/dailyDozenFoods.json';
+import dailyDozen from '../public/assets/dailyDozenFoods.json';
 
 import './App.scss';
 
