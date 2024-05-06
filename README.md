@@ -11,6 +11,6 @@ Tools:
 - TailwindCSS (^3.4.3)
 
 Features:
-- Screenreader announcements on Safari on adding and removing servings. 
+- Screenreader announcements on adding and removing servings (testing most consistent in Safari Mac VoiceOver). 
 
 Created May 2024
