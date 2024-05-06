@@ -2,12 +2,15 @@ function UserSettings({ month, foodsList }) {
 	return (
 		<div className="tracker__user-settings text-center">
 			<p className="font-bold">
-				<span className="text-2xl">Month:</span>
-				<span className="text-green-600 text-32xl"> {month}</span>
+				<span className="text-2xl sm:text-3xl">Month:</span>
+				<span className="text-green-600 text-2xl sm:text-3xl"> {month}</span>
 			</p>
 			<p className="font-bold">
-				<span className="text-2xl">Foods List:</span>
-				<span className="text-green-600 text-32xl"> {foodsList}</span>
+				<span className="text-2xl sm:text-3xl">Foods List:</span>
+				<span className="text-green-600 text-2xl sm:text-3xl">
+					{' '}
+					{foodsList}
+				</span>
 			</p>
 		</div>
 	);
