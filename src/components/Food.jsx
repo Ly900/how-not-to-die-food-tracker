@@ -13,8 +13,11 @@ function Food({ food, onFoodChange, onActionChange, action }) {
 			didMount.current = true;
 			return;
 		}
-		console.log(`1 ${food} ${action}`);
-		srMessage(`1 ${food} ${action}`);
+		if (count < 0) {
+			srMessage(`No ${food} to remove`);
+		} else {
+			srMessage(`1 ${food} ${action}`);
+		}
 	}, [count]);
 
 	function srMessage(message) {
@@ -25,26 +28,28 @@ function Food({ food, onFoodChange, onActionChange, action }) {
 	}
 
 	function handleAddClick() {
+		if (count < 0) {
+			setCount(0);
+		}
 		setCount((count) => count + 1);
 		onFoodChange(food);
 		onActionChange('added');
 	}
 
 	function handleRemoveClick() {
-		if (count === 0) {
-			return;
-		}
 		setCount((count) => count - 1);
 		onFoodChange(food);
 		onActionChange('removed');
 	}
 
 	function createCheckmarks() {
-		let checkmarksArr = new Array(count);
+		if (count > 0) {
+			let checkmarksArr = new Array(count);
 
-		for (let i = 0; i < count; i++) checkmarksArr.push(<Checkmark key={i} />);
+			for (let i = 0; i < count; i++) checkmarksArr.push(<Checkmark key={i} />);
 
-		return checkmarksArr;
+			return checkmarksArr;
+		}
 	}
 
 	const checkmarks = createCheckmarks();
@@ -73,7 +78,7 @@ function Food({ food, onFoodChange, onActionChange, action }) {
 			<div className="flex align-middle flex-wrap">{checkmarks}</div>
 			<div className="">
 				<p className="text-base inline-block align-middle">
-					<strong>Total:</strong> {count}
+					<strong>Total:</strong> {count >= 0 ? count : 0}
 				</p>
 			</div>
 		</div>
