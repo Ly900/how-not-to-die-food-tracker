@@ -36,13 +36,13 @@ function Food({ food, onFoodChange, onActionChange }) {
 					className="inline-block bg-green-500 hover:bg-green-700 text-white py-1/2 px-1 rounded transition-colors text-base antialiased font-medium uppercase mr-2"
 					onClick={() => handleAddClick()}
 				>
-					Add
+					Add <span className="sr-only">1 serving of {food}</span>
 				</button>
 				<button
 					className="inline-block bg-slate-500 hover:bg-slate-700 text-white py-1/2 px-1 rounded transition-colors text-base antialiased font-medium uppercase"
 					onClick={() => handleRemoveClick()}
 				>
-					Remove
+					Remove <span className="sr-only">1 serving of {food}</span>
 				</button>
 			</div>
 			<div className="tracker__food-wrapper">
