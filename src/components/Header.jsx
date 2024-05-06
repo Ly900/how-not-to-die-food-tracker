@@ -17,7 +17,9 @@ function Header({ step }) {
 			<p className="mb-3 text-2xl text-center w-5/6">
 				Use this app to track your monthly intake of healthy foods.
 			</p>
-			{step !== 'chart' && <img src="../src/assets/broccoli.svg" />}
+			{step !== 'chart' && (
+				<img src="/how-not-to-die/src/assets/broccoli.svg" />
+			)}
 		</header>
 	);
 }
