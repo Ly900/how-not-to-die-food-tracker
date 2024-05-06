@@ -18,6 +18,7 @@ function Food({ food }) {
 			</div>
 			<div className="flex align-middle">
 				<Checkmark />
+				<Checkmark />
 			</div>
 		</div>
 	);
