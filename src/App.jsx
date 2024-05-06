@@ -57,12 +57,13 @@ function App() {
 
 			{step === 'chart' && <TrackerInstructions />}
 
-			<div className="tracker__chart p-3">
-				{step === 'chart' &&
-					dailyDozenArr.map((food) => {
+			{step === 'chart' && (
+				<div className="tracker__chart p-3">
+					{dailyDozenArr.map((food) => {
 						return <Food key={food} food={food} />;
 					})}
-			</div>
+				</div>
+			)}
 		</>
 	);
 }
