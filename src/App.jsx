@@ -28,7 +28,7 @@ function App() {
 
 	function handleFoodsListClick() {
 		setFoodsList('Daily Dozen');
-		setStep('trackFoods');
+		setStep('chart');
 	}
 
 	const dailyDozenArr = dailyDozen.dailyDozenFoods;
@@ -37,7 +37,7 @@ function App() {
 		<>
 			<Header step={step} />
 
-			{step !== 'trackFoods' && (
+			{step !== 'chart' && (
 				<div className="tracker__questions mb-6 text-center">
 					{step === 'start' && <StartQuestion handleClick={handleStartClick} />}
 
@@ -49,11 +49,9 @@ function App() {
 				</div>
 			)}
 
-			{step === 'trackFoods' && (
-				<UserSettings month={month} foodsList={foodsList} />
-			)}
+			{step === 'chart' && <UserSettings month={month} foodsList={foodsList} />}
 
-			{step === 'trackFoods' && (
+			{step === 'chart' && (
 				<div className="p-3">
 					<p className="mb-2 font-bold">Instructions:</p>
 					<p className="text-base">
@@ -66,7 +64,7 @@ function App() {
 			)}
 
 			<div className="tracker__chart p-3">
-				{step === 'trackFoods' &&
+				{step === 'chart' &&
 					dailyDozenArr.map((food) => {
 						return (
 							<div key={food} className="tracker__row border-b-2 mb-2">

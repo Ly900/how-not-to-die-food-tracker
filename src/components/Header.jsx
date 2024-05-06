@@ -4,18 +4,18 @@ function Header({ step }) {
 	return (
 		<header
 			className={`flex flex-col items-center ${
-				step === 'trackFoods' ? 'mb-0' : 'mb-5'
+				step === 'chart' ? 'mb-0' : 'mb-5'
 			}`}
 		>
 			<div className="flex">
 				<h1
 					className={`tracker__main-heading font-bold text-center text-5xl ${
-						step === 'trackFoods' ? 'mb-0 mr-2' : 'mb-2'
+						step === 'chart' ? 'mb-0 mr-2' : 'mb-2'
 					}`}
 				>
 					<i className="text-green-700">How Not To Die</i> Food Tracker
 				</h1>
-				{step === 'trackFoods' && (
+				{step === 'chart' && (
 					<span className="flex align-middle">
 						<img src="../src/assets/broccoli.svg" className="" width="40px" />
 					</span>
@@ -24,7 +24,7 @@ function Header({ step }) {
 			<p className="mb-3 text-2xl">
 				Use this app to track your monthly intake of healthy foods.
 			</p>
-			{step !== 'trackFoods' && <img src="../src/assets/broccoli.svg" />}
+			{step !== 'chart' && <img src="../src/assets/broccoli.svg" />}
 		</header>
 	);
 }
