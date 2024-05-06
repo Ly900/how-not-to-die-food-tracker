@@ -10,4 +10,7 @@ Tools:
 - React (^18.2.0)
 - TailwindCSS (^3.4.3)
 
-Created May 2024
+Features:
+- Screenreader announcements on Safari on adding and removing servings. 
+
+- Created May 2024
