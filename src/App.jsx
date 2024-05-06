@@ -6,11 +6,9 @@ import MonthQuestion from './components/MonthQuestion';
 import UserSettings from './components/UserSettings';
 import TrackerInstructions from './components/TrackerInstructions';
 import FoodsListQuestion from './components/FoodsListQuestion';
-import Food from './components/Food';
-
-import dailyDozen from './assets/dailyDozenFoods.json';
 
 import './App.scss';
+import TrackerChart from './components/TrackerChart';
 
 function App() {
 	const [month, setMonth] = useState('');
@@ -35,8 +33,6 @@ function App() {
 		setStep('chart');
 	}
 
-	const dailyDozenArr = dailyDozen.dailyDozenFoods;
-
 	return (
 		<>
 			<Header step={step} />
@@ -57,13 +53,7 @@ function App() {
 
 			{step === 'chart' && <TrackerInstructions />}
 
-			{step === 'chart' && (
-				<div className="tracker__chart p-3">
-					{dailyDozenArr.map((food) => {
-						return <Food key={food} food={food} />;
-					})}
-				</div>
-			)}
+			{step === 'chart' && <TrackerChart />}
 		</>
 	);
 }
