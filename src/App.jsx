@@ -10,7 +10,6 @@ import Food from './components/Food';
 import dailyDozen from './assets/dailyDozenFoods.json';
 
 import './App.scss';
-import TrackerChart from './components/TrackerChart';
 
 function App() {
 	const [month, setMonth] = useState('');
