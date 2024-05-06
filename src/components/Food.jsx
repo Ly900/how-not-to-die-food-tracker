@@ -15,8 +15,20 @@ function Food({ food }) {
 		setCount((count) => count - 1);
 	}
 
+	function createCheckmarks() {
+		let checkmarksArr = new Array(count);
+		let newArray = [];
+
+		for (let i = 0; i < count; i++) checkmarksArr.push(<Checkmark />);
+
+		console.log('checkmarksArr: ', checkmarksArr);
+		return checkmarksArr;
+	}
+
+	const checkmarks = createCheckmarks();
+
 	return (
-		<div className="tracker__row border-b-2 mb-2 pb-1">
+		<div key={food} className="tracker__row border-b-2 mb-2 pb-1">
 			<div className="tracker__chart-buttons">
 				<button
 					className="inline-block bg-green-500 hover:bg-green-700 text-white py-1/2 px-1 rounded transition-colors text-base antialiased font-medium uppercase mr-2"
@@ -38,7 +50,7 @@ function Food({ food }) {
 			</div>
 			<div className="flex align-middle">
 				{/* <Checkmark /> */}
-				{count}
+				{checkmarks}
 			</div>
 		</div>
 	);

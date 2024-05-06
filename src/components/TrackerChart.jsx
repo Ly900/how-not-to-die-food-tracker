@@ -6,8 +6,8 @@ function TrackerChart({}) {
 
 	return (
 		<div className="tracker__chart p-3">
-			{dailyDozenArr.map((food) => {
-				return <Food key={food} food={food} />;
+			{dailyDozenArr.map((food, i) => {
+				return <Food key={i} food={food} />;
 			})}
 		</div>
 	);
