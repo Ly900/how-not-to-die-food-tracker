@@ -37,8 +37,6 @@ function App() {
 		<>
 			<Header step={step} />
 
-			{/* Step 0 */}
-
 			{step !== 'trackFoods' && (
 				<div className="tracker__questions mb-6 text-center">
 					{step === 'start' && <StartQuestion handleClick={handleStartClick} />}
