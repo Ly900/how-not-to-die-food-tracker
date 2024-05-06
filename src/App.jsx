@@ -6,7 +6,7 @@ import MonthQuestion from './components/MonthQuestion';
 import UserSettings from './components/UserSettings';
 import TrackerInstructions from './components/TrackerInstructions';
 import FoodsListQuestion from './components/FoodsListQuestion';
-import Checkmark from './components/Checkmark';
+import Food from './components/Food';
 
 import dailyDozen from './assets/dailyDozenFoods.json';
 
@@ -60,26 +60,7 @@ function App() {
 			<div className="tracker__chart p-3">
 				{step === 'chart' &&
 					dailyDozenArr.map((food) => {
-						return (
-							<div key={food} className="tracker__row border-b-2 mb-2 pb-1">
-								<div className="tracker__chart-buttons">
-									<button className="inline-block bg-green-500 hover:bg-green-700 text-white py-1/2 px-1 rounded transition-colors text-base antialiased font-medium uppercase mr-2">
-										Add
-									</button>
-									<button className="inline-block bg-slate-500 hover:bg-slate-700 text-white py-1/2 px-1 rounded transition-colors text-base antialiased font-medium uppercase">
-										Remove
-									</button>
-								</div>
-								<div className="tracker__food-wrapper">
-									<span className="tracker__food-text mr-2 text-right text-base">
-										{food}
-									</span>
-								</div>
-								<div className="flex align-middle">
-									<Checkmark />
-								</div>
-							</div>
-						);
+						return <Food key={food} food={food} />;
 					})}
 			</div>
 		</>
