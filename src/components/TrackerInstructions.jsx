@@ -10,7 +10,7 @@ function TrackerInstructions({ food, action }) {
 					Click <strong>Remove</strong> to remove 1 serving of food eaten.
 				</p>
 			</div>
-			<div className="tracker__notifications min-h-10 sm:min-h-0 text-sm sm:text-base">
+			<div className="tracker__notifications min-h-10 text-sm sm:text-base">
 				{food && action === 'add' && (
 					<p className="text-green-800">
 						Nice! You've added 1 serving of <strong>{food}</strong>.
