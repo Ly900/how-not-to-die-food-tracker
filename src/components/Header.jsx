@@ -13,7 +13,7 @@ function Header({ step }) {
 						step === 'trackFoods' ? 'mb-0 mr-2' : 'mb-2'
 					}`}
 				>
-					How Not To Die Food Tracker
+					<i className="text-green-700">How Not To Die</i> Food Tracker
 				</h1>
 				{step === 'trackFoods' && (
 					<span className="flex align-middle">

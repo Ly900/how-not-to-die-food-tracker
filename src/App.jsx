@@ -53,6 +53,18 @@ function App() {
 				<UserSettings month={month} foodsList={foodsList} />
 			)}
 
+			{step === 'trackFoods' && (
+				<div className="p-3">
+					<p className="mb-2 font-bold">Instructions:</p>
+					<p className="text-base">
+						Click <strong>Add</strong> to log 1 serving of food eaten.
+					</p>
+					<p className="text-base">
+						Click <strong>Remove</strong> to remove 1 serving of food eaten.
+					</p>
+				</div>
+			)}
+
 			<div className="tracker__chart p-3">
 				{step === 'trackFoods' &&
 					dailyDozenArr.map((food) => {
