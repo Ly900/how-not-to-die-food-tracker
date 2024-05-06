@@ -35,19 +35,21 @@ function App() {
 
 	return (
 		<>
-			<Header />
+			<Header step={step} />
 
 			{/* Step 0 */}
 
-			<div className="tracker__questions mb-6 text-center">
-				{step === 'start' && <StartQuestion handleClick={handleStartClick} />}
+			{step !== 'trackFoods' && (
+				<div className="tracker__questions mb-6 text-center">
+					{step === 'start' && <StartQuestion handleClick={handleStartClick} />}
 
-				{step === 'month' && <MonthQuestion handleClick={handleMonthClick} />}
+					{step === 'month' && <MonthQuestion handleClick={handleMonthClick} />}
 
-				{step === 'foodsList' && (
-					<FoodsListQuestion handleClick={handleFoodsListClick} />
-				)}
-			</div>
+					{step === 'foodsList' && (
+						<FoodsListQuestion handleClick={handleFoodsListClick} />
+					)}
+				</div>
+			)}
 
 			{step === 'trackFoods' && (
 				<UserSettings month={month} foodsList={foodsList} />
