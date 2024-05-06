@@ -19,9 +19,8 @@ function Food({ food }) {
 		let checkmarksArr = new Array(count);
 		let newArray = [];
 
-		for (let i = 0; i < count; i++) checkmarksArr.push(<Checkmark />);
+		for (let i = 0; i < count; i++) checkmarksArr.push(<Checkmark key={i} />);
 
-		console.log('checkmarksArr: ', checkmarksArr);
 		return checkmarksArr;
 	}
 
