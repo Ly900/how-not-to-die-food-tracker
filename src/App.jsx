@@ -6,6 +6,7 @@ import MonthQuestion from './components/MonthQuestion';
 import UserSettings from './components/UserSettings';
 import TrackerInstructions from './components/TrackerInstructions';
 import FoodsListQuestion from './components/FoodsListQuestion';
+import Checkmark from './components/Checkmark';
 
 import dailyDozen from './assets/dailyDozenFoods.json';
 
@@ -74,7 +75,9 @@ function App() {
 										{food}
 									</span>
 								</div>
-								<div>&#x2713;</div>
+								<div className="flex align-middle">
+									<Checkmark />
+								</div>
 							</div>
 						);
 					})}
