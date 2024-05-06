@@ -17,6 +17,7 @@ function App() {
 	const [foodsList, setFoodsList] = useState('');
 	const [step, setStep] = useState('start');
 	const [food, setFood] = useState('');
+	const [action, setAction] = useState(null);
 
 	function handleStartClick() {
 		setStep('month');
@@ -40,6 +41,10 @@ function App() {
 
 	function updateFood(food) {
 		setFood(food);
+	}
+
+	function handleActionChange(action) {
+		setAction(action);
 	}
 
 	return (
@@ -74,9 +79,14 @@ function App() {
 						</p>
 					</div>
 					<div className="tracker__notifications">
-						{food && (
+						{food && action === 'add' && (
 							<p className="text-base text-green-800">
 								Nice! You've added 1 serving of <strong>{food}</strong>.
+							</p>
+						)}
+						{food && action === 'remove' && (
+							<p className="text-base text-red-800">
+								You've removed 1 serving of <strong>{food}</strong>.
 							</p>
 						)}
 					</div>
@@ -94,6 +104,9 @@ function App() {
 								food={food}
 								onFoodChange={() => {
 									updateFood(food);
+								}}
+								onActionChange={(action) => {
+									handleActionChange(action);
 								}}
 							/>
 						);

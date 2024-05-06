@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import Checkmark from './Checkmark';
 
-function Food({ food, onFoodChange }) {
+function Food({ food, onFoodChange, onActionChange }) {
 	const [count, setCount] = useState(0);
 
 	function handleAddClick() {
 		setCount((count) => count + 1);
 		onFoodChange(food);
+		onActionChange('add');
 	}
 
 	function handleRemoveClick() {
@@ -14,6 +15,8 @@ function Food({ food, onFoodChange }) {
 			return;
 		}
 		setCount((count) => count - 1);
+		onFoodChange(food);
+		onActionChange('remove');
 	}
 
 	function createCheckmarks() {
