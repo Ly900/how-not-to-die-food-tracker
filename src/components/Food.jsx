@@ -17,7 +17,6 @@ function Food({ food }) {
 
 	function createCheckmarks() {
 		let checkmarksArr = new Array(count);
-		let newArray = [];
 
 		for (let i = 0; i < count; i++) checkmarksArr.push(<Checkmark key={i} />);
 
