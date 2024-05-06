@@ -1,12 +1,15 @@
 import { useState } from 'react';
+
 import Header from './components/Header';
 import StartQuestion from './components/StartQuestion';
 import MonthQuestion from './components/MonthQuestion';
 import UserSettings from './components/UserSettings';
+import TrackerInstructions from './components/TrackerInstructions';
+import FoodsListQuestion from './components/FoodsListQuestion';
+
 import dailyDozen from './assets/dailyDozenFoods.json';
 
 import './App.scss';
-import FoodsListQuestion from './components/FoodsListQuestion';
 
 function App() {
 	const [month, setMonth] = useState('');
@@ -51,30 +54,13 @@ function App() {
 
 			{step === 'chart' && <UserSettings month={month} foodsList={foodsList} />}
 
-			{step === 'chart' && (
-				<div className="tracker__instructions-container p-3">
-					<div className="tracker__instructions mb-3">
-						<p className="mb-2 font-bold">Instructions:</p>
-						<p className="text-base">
-							Click <strong>Add</strong> to log 1 serving of food eaten.
-						</p>
-						<p className="text-base">
-							Click <strong>Remove</strong> to remove 1 serving of food eaten.
-						</p>
-					</div>
-					<div className="tracker__notifications">
-						<p className="text-base text-green-800">
-							Nice! You've logged 1 serving of <strong>apples</strong>.
-						</p>
-					</div>
-				</div>
-			)}
+			{step === 'chart' && <TrackerInstructions />}
 
 			<div className="tracker__chart p-3">
 				{step === 'chart' &&
 					dailyDozenArr.map((food) => {
 						return (
-							<div key={food} className="tracker__row border-b-2 mb-2">
+							<div key={food} className="tracker__row border-b-2 mb-2 pb-1">
 								<div className="tracker__chart-buttons">
 									<button className="inline-block bg-green-500 hover:bg-green-700 text-white py-1/2 px-1 rounded transition-colors text-base antialiased font-medium uppercase mr-2">
 										Add
