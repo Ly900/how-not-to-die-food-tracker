@@ -13,4 +13,4 @@ Tools:
 Features:
 - Screenreader announcements on Safari on adding and removing servings. 
 
-- Created May 2024
+Created May 2024
