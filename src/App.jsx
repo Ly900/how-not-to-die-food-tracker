@@ -52,6 +52,12 @@ function App() {
 
 			{step !== 'chart' && (
 				<div className="tracker__questions mb-6 text-center">
+					{step !== 'start' && (
+						<button className="mb-3 inline-block bg-slate-500 hover:bg-slate-700 text-white py-2 px-4 rounded transition-colors text-lg antialiased font-medium uppercase">
+							Start Over
+						</button>
+					)}
+
 					{step === 'start' && <StartQuestion handleClick={handleStartClick} />}
 
 					{step === 'month' && <MonthQuestion handleClick={handleMonthClick} />}
