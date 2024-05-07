@@ -4,6 +4,7 @@ function FoodsListQuestion({ handleClick }) {
 	const [customError, setCustomError] = useState(false);
 
 	function handleCustomClick() {
+		console.log('This feature is not yet available');
 		setCustomError(true);
 	}
 	return (
@@ -27,14 +28,11 @@ function FoodsListQuestion({ handleClick }) {
 					Custom
 				</button>
 			</div>
-
-			<div
-				className={`tracker__custom-alert text-red-700 ${
-					!customError ? 'invisible' : ''
-				}`}
-			>
-				<p>*This feature is not yet available.</p>
-			</div>
+			{customError && (
+				<div className="tracker__custom-alert text-red-700">
+					<p>*This feature is not yet available.</p>
+				</div>
+			)}
 		</div>
 	);
 }
