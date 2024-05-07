@@ -99,27 +99,27 @@ function App() {
 				<TrackerInstructions food={food} action={action} count={count} />
 			)}
 
-			<div className="tracker__user-options p-3">
-				<button
-					className="inline-block bg-green-500 hover:bg-green-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase mr-2"
-					onClick={() => {
-						handleSaveMonthClick();
-					}}
-				>
-					Save Month
-				</button>
-			</div>
-
 			{/* {step === 'chart' && <TrackerChart />} */}
 
 			{step === 'chart' && (
 				<div className="tracker__chart p-3">
+					<div className="tracker__user-options mb-5">
+						<button
+							className="inline-block bg-green-500 hover:bg-green-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase mr-2"
+							onClick={() => {
+								handleSaveMonthClick();
+							}}
+						>
+							Save Month
+						</button>
+					</div>
 					{dailyDozenArr.map((food, i) => {
 						return (
 							<Food
 								key={i}
 								food={food}
 								action={action}
+								month={month}
 								onFoodChange={() => {
 									updateFood(food);
 								}}

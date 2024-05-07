@@ -8,6 +8,7 @@ function Food({
 	onFoodChange,
 	onActionChange,
 	action,
+	month,
 	giveCountToParent,
 }) {
 	const [count, setCount] = useState(0);
@@ -26,6 +27,8 @@ function Food({
 			srMessage(`${count} total ${food}`);
 		}
 		giveCountToParent(count);
+
+		console.log('month: ', month);
 	}, [count]);
 
 	function srMessage(message) {
