@@ -4,7 +4,6 @@ function FoodsListQuestion({ handleClick }) {
 	const [customError, setCustomError] = useState(false);
 
 	function handleCustomClick() {
-		console.log('This feature is not yet available');
 		setCustomError(true);
 	}
 	return (
