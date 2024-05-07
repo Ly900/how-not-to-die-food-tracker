@@ -9,7 +9,7 @@ function Header({ step }) {
 		>
 			<div className="flex mb-2">
 				<h1
-					className={`tracker__main-heading font-bold text-center text-5xl mb-3`}
+					className={`tracker__main-heading font-bold text-center text-5xl mb-1`}
 				>
 					<i className="text-green-700">How Not To Die</i> Food Tracker
 				</h1>
