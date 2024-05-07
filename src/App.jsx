@@ -65,6 +65,7 @@ function App() {
 	function giveCountToParent(count) {
 		setCount(count);
 	}
+	function handleSaveMonthClick() {}
 	return (
 		<>
 			<Header step={step} />
@@ -99,7 +100,12 @@ function App() {
 			)}
 
 			<div className="tracker__user-options p-3">
-				<button className="inline-block hover:bg-yellow-300 bg-green-500 text-white hover:text-black py-2 px-2 rounded transition-colors text-base antialiased font-medium uppercase mr-2">
+				<button
+					className="inline-block bg-green-500 hover:bg-green-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase mr-2"
+					onClick={() => {
+						handleSaveMonthClick();
+					}}
+				>
 					Save Month
 				</button>
 			</div>
