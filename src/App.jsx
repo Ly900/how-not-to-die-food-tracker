@@ -98,6 +98,12 @@ function App() {
 				<TrackerInstructions food={food} action={action} count={count} />
 			)}
 
+			<div className="tracker__user-options p-3">
+				<button className="inline-block hover:bg-yellow-300 bg-green-500 text-white hover:text-black py-2 px-2 rounded transition-colors text-base antialiased font-medium uppercase mr-2">
+					Save Month
+				</button>
+			</div>
+
 			{/* {step === 'chart' && <TrackerChart />} */}
 
 			{step === 'chart' && (
