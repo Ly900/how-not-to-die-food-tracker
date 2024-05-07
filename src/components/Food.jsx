@@ -3,7 +3,13 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 import Checkmark from './Checkmark';
 
-function Food({ food, onFoodChange, onActionChange, action }) {
+function Food({
+	food,
+	onFoodChange,
+	onActionChange,
+	action,
+	giveCountToParent,
+}) {
 	const [count, setCount] = useState(0);
 
 	const didMount = useRef(false);
@@ -18,6 +24,7 @@ function Food({ food, onFoodChange, onActionChange, action }) {
 		} else {
 			srMessage(`1 ${food} ${action}`);
 		}
+		giveCountToParent(count);
 	}, [count]);
 
 	function srMessage(message) {

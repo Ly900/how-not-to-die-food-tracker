@@ -1,4 +1,4 @@
-function TrackerInstructions({ food, action }) {
+function TrackerInstructions({ food, action, count }) {
 	return (
 		<div className="tracker__instructions-container p-3 text-center sm:text-left">
 			<div className="tracker__instructions mb-3 text-sm sm:text-base">
@@ -16,9 +16,14 @@ function TrackerInstructions({ food, action }) {
 						Nice! You've added 1 serving of <strong>{food}</strong>.
 					</p>
 				)}
-				{food && action === 'removed' && (
+				{food && action === 'removed' && count >= 0 && (
 					<p className="text-red-800">
 						You've removed 1 serving of <strong>{food}</strong>.
+					</p>
+				)}
+				{food && action === 'removed' && count < 0 && (
+					<p className="text-red-800">
+						You have no <strong>{food}</strong> to remove.
 					</p>
 				)}
 			</div>

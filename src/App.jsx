@@ -18,6 +18,7 @@ function App() {
 	const [step, setStep] = useState('start');
 	const [food, setFood] = useState('');
 	const [action, setAction] = useState(null);
+	const [count, setCount] = useState(0);
 
 	function srMessage(message) {
 		document.getElementById('alert').append(message);
@@ -61,7 +62,9 @@ function App() {
 		setFood('');
 		setAction(null);
 	}
-
+	function giveCountToParent(count) {
+		setCount(count);
+	}
 	return (
 		<>
 			<Header step={step} />
@@ -91,7 +94,9 @@ function App() {
 
 			{step === 'chart' && <UserSettings month={month} foodsList={foodsList} />}
 
-			{step === 'chart' && <TrackerInstructions food={food} action={action} />}
+			{step === 'chart' && (
+				<TrackerInstructions food={food} action={action} count={count} />
+			)}
 
 			{/* {step === 'chart' && <TrackerChart />} */}
 
@@ -110,6 +115,7 @@ function App() {
 									handleActionChange(action);
 								}}
 								srMessage={(food, action) => srMessage(food, action)}
+								giveCountToParent={(count) => giveCountToParent(count)}
 							/>
 						);
 					})}
