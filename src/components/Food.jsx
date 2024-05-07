@@ -23,6 +23,7 @@ function Food({
 			srMessage(`No ${food} to remove`);
 		} else {
 			srMessage(`1 ${food} ${action}`);
+			srMessage(`${count} total ${food}`);
 		}
 		giveCountToParent(count);
 	}, [count]);
