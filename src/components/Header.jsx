@@ -21,7 +21,7 @@ function Header({ step }) {
 				<p className="mb-1 text-base text-center">
 					Learn more about How Not to Die at the following links:
 				</p>
-				<ul className="mb-3 text-base text-center flex gap-2 justify-center">
+				<ul className="mb-3 text-base text-center gap-2 justify-center sm:flex">
 					<li>
 						<a
 							href="https://www.amazon.com/How-Not-Die-Discover-Scientifically/dp/1250066115"
@@ -29,7 +29,7 @@ function Header({ step }) {
 						>
 							Amazon.com
 						</a>{' '}
-						|
+						<span className="invisible sm:visible">|</span>
 					</li>
 					<li>
 						<a
@@ -38,7 +38,7 @@ function Header({ step }) {
 						>
 							NutritionFacts.org
 						</a>{' '}
-						|
+						<span className="invisible sm:visible">|</span>
 					</li>
 					<li>
 						<a
