@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useRef } from 'react';
 
 import Header from './components/Header';
 import StartQuestion from './components/StartQuestion';
@@ -20,7 +21,18 @@ function App() {
 	const [action, setAction] = useState(null);
 	const [count, setCount] = useState(0);
 	const [finalServings, setFinalServings] = useState([]);
-	const foodAndCountArray = [];
+	const [foodAndCountArr, setFoodAndCountArr] = useState([]);
+
+	const didMount = useRef(false);
+
+	useEffect(() => {
+		if (!didMount.current) {
+			didMount.current = true;
+			return;
+		}
+		console.log('count is: ', count);
+		console.log('food is: ', food);
+	}, [count]);
 
 	function srMessage(message) {
 		document.getElementById('alert').append(message);
@@ -68,21 +80,17 @@ function App() {
 	function giveCountToParent(count) {
 		setCount(count);
 	}
+	const foodAndCountArray = [];
+
 	function giveMonthDataToParent(foodAndCount) {
-		// if (foodAndCountArray.length === 0) {
 		foodAndCountArray.push(foodAndCount);
-		// }
-		// else {
-		// 	foodAndCountArray.map((obj) => {
-		// 		if (obj.food === foodAndCount.food) {
-		// 			foodAndCount.count = obj.count;
-		// 		}
-		// 	});
-		// }
+		setFinalServings((previousFinalServings) => foodAndCountArray);
+		// console.log('foodAndCount: ', foodAndCount);
 	}
 	function handleSaveMonthClick() {
-		console.log('foodAndCountArray: ', foodAndCountArray);
-		setFinalServings(foodAndCountArray);
+		// setFinalServings(foodAndCountArray);
+		// console.log('foodAndCountArray: ', foodAndCountArray);
+		// setFoodAndCountArr((prevFoodAndCountArr) => foodAndCountArr);
 	}
 	return (
 		<>

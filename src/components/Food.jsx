@@ -30,7 +30,7 @@ function Food({
 		}
 		giveCountToParent(count);
 		giveMonthDataToParent({ food, count });
-	}, [count]);
+	}, []);
 
 	function srMessage(message) {
 		document.getElementById('alert').append(message);
