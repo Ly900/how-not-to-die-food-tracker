@@ -19,6 +19,8 @@ function App() {
 	const [food, setFood] = useState('');
 	const [action, setAction] = useState(null);
 	const [count, setCount] = useState(0);
+	const [finalServings, setFinalServings] = useState([]);
+	const foodAndCountArray = [];
 
 	function srMessage(message) {
 		document.getElementById('alert').append(message);
@@ -61,11 +63,27 @@ function App() {
 		setStep('start');
 		setFood('');
 		setAction(null);
+		setFinalServings([]);
 	}
 	function giveCountToParent(count) {
 		setCount(count);
 	}
-	function handleSaveMonthClick() {}
+	function giveMonthDataToParent(foodAndCount) {
+		// if (foodAndCountArray.length === 0) {
+		foodAndCountArray.push(foodAndCount);
+		// }
+		// else {
+		// 	foodAndCountArray.map((obj) => {
+		// 		if (obj.food === foodAndCount.food) {
+		// 			foodAndCount.count = obj.count;
+		// 		}
+		// 	});
+		// }
+	}
+	function handleSaveMonthClick() {
+		console.log('foodAndCountArray: ', foodAndCountArray);
+		setFinalServings(foodAndCountArray);
+	}
 	return (
 		<>
 			<Header step={step} />
@@ -128,6 +146,9 @@ function App() {
 								}}
 								srMessage={(food, action) => srMessage(food, action)}
 								giveCountToParent={(count) => giveCountToParent(count)}
+								giveMonthDataToParent={(foodAndCount) =>
+									giveMonthDataToParent(foodAndCount)
+								}
 							/>
 						);
 					})}

@@ -8,12 +8,14 @@ function Food({
 	onFoodChange,
 	onActionChange,
 	action,
-	month,
 	giveCountToParent,
+	giveMonthDataToParent,
 }) {
 	const [count, setCount] = useState(0);
 
 	const didMount = useRef(false);
+
+	const foodArray = [];
 
 	useEffect(() => {
 		if (!didMount.current) {
@@ -27,8 +29,7 @@ function Food({
 			srMessage(`${count} total ${food}`);
 		}
 		giveCountToParent(count);
-
-		console.log('month: ', month);
+		giveMonthDataToParent({ food, count });
 	}, [count]);
 
 	function srMessage(message) {
