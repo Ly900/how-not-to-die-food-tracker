@@ -22,20 +22,21 @@ function Food({
 			didMount.current = true;
 			return;
 		}
-		if (count < 0) {
-			srMessage(`No ${food} to remove`);
-		} else {
-			srMessage(`1 ${food} ${action}`);
-			srMessage(`${count} total ${food}`);
-		}
+
 		giveCountToParent(count);
 		giveMonthDataToParent({ food, count });
-	}, [food]);
+	}, []);
 
 	useEffect(() => {
 		if (!updatedServingsDidMount.current) {
 			updatedServingsDidMount.current = true;
 			return;
+		}
+		if (count < 0) {
+			srMessage(`No ${food} to remove`);
+		} else {
+			srMessage(`1 ${food} ${action}`);
+			srMessage(`${count} total ${food}`);
 		}
 		getUpdatedServings({ food, count });
 	}, [count]);

@@ -91,6 +91,9 @@ function App() {
 		const finalServings = initialServings.map((serving) => {
 			if (serving.food === updatedServing.food) {
 				serving.count = updatedServing.count;
+				if (serving.count < 0) {
+					serving.count = 0;
+				}
 				return serving;
 			} else {
 				return serving;
