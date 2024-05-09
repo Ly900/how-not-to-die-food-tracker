@@ -10,12 +10,12 @@ function Food({
 	action,
 	giveCountToParent,
 	giveMonthDataToParent,
+	getUpdatedServings,
 }) {
 	const [count, setCount] = useState(0);
 
 	const didMount = useRef(false);
-
-	const foodArray = [];
+	const updatedServingsDidMount = useRef(false);
 
 	useEffect(() => {
 		if (!didMount.current) {
@@ -30,7 +30,15 @@ function Food({
 		}
 		giveCountToParent(count);
 		giveMonthDataToParent({ food, count });
-	}, []);
+	}, [food]);
+
+	useEffect(() => {
+		if (!updatedServingsDidMount.current) {
+			updatedServingsDidMount.current = true;
+			return;
+		}
+		getUpdatedServings({ food, count });
+	}, [count]);
 
 	function srMessage(message) {
 		document.getElementById('alert').append(message);

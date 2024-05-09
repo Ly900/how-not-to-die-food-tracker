@@ -20,8 +20,8 @@ function App() {
 	const [food, setFood] = useState('');
 	const [action, setAction] = useState(null);
 	const [count, setCount] = useState(0);
+	const [initialServings, setInitialServings] = useState([]);
 	const [finalServings, setFinalServings] = useState([]);
-	const [foodAndCountArr, setFoodAndCountArr] = useState([]);
 
 	const didMount = useRef(false);
 
@@ -30,9 +30,9 @@ function App() {
 			didMount.current = true;
 			return;
 		}
-		console.log('count is: ', count);
-		console.log('food is: ', food);
-	}, [count]);
+		// console.log('food is: ', food);
+		// console.log('count is: ', count);
+	}, [initialServings]);
 
 	function srMessage(message) {
 		document.getElementById('alert').append(message);
@@ -84,13 +84,18 @@ function App() {
 
 	function giveMonthDataToParent(foodAndCount) {
 		foodAndCountArray.push(foodAndCount);
-		setFinalServings((previousFinalServings) => foodAndCountArray);
-		// console.log('foodAndCount: ', foodAndCount);
+		setInitialServings(foodAndCountArray);
 	}
-	function handleSaveMonthClick() {
-		// setFinalServings(foodAndCountArray);
-		// console.log('foodAndCountArray: ', foodAndCountArray);
-		// setFoodAndCountArr((prevFoodAndCountArr) => foodAndCountArr);
+	function handleUpdatedServings(updatedServing) {
+		const finalServings = initialServings.map((serving) => {
+			if (serving.food === updatedServing.food) {
+				serving.count = updatedServing.count;
+				return serving;
+			} else {
+				return serving;
+			}
+		});
+		setFinalServings(finalServings);
 	}
 	return (
 		<>
@@ -157,6 +162,9 @@ function App() {
 								giveMonthDataToParent={(foodAndCount) =>
 									giveMonthDataToParent(foodAndCount)
 								}
+								getUpdatedServings={(updatedServings) => {
+									handleUpdatedServings(updatedServings);
+								}}
 							/>
 						);
 					})}
