@@ -87,6 +87,7 @@ function App() {
 		setInitialServings(foodAndCountArray);
 	}
 	function handleUpdatedServings(updatedServing) {
+		console.log('updatedServing:', updatedServing.count);
 		const finalServings = initialServings.map((serving) => {
 			if (serving.food === updatedServing.food) {
 				serving.count = updatedServing.count;
