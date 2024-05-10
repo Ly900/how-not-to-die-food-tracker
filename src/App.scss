@@ -8,7 +8,8 @@
 
 .tracker {
 	$medium: 720px;
-	&__user-settings {
+	&__user-settings,
+	&__saved-chart-heading {
 		font-family: 'Boogaloo', sans-serif;
 	}
 	&__row {

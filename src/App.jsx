@@ -194,9 +194,13 @@ function App() {
 			)}
 
 			<div className="tracker__saved-charts-container p-3">
-				<hr className="w-100 min-h-1 my-1 bg-gray-300 border-0 rounded"></hr>
+				<hr className="w-100 min-h-1 my-1 mb-5 bg-gray-300 border-0 rounded"></hr>
+				<h2 className="mb-3 tracker__saved-chart-heading text-3xl">
+					<b>Saved Charts</b>
+				</h2>
+
+				{storedMonths.length === 0 && <p>No stored months.</p>}
 			</div>
-			<h2 className="p-3">Saved Charts</h2>
 		</>
 	);
 }
