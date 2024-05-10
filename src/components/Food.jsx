@@ -12,23 +12,18 @@ function Food({
 	giveMonthDataToParent,
 	getUpdatedServings,
 }) {
-	// const [count, setCount] = useState(0);
+	const [count, setCount] = useState(food[1]);
 
 	const didMount = useRef(false);
 	const updatedServingsDidMount = useRef(false);
 	const foodName = food[0];
-	const foodCount = food[1];
-
-	console.log('foodName: ', foodName);
 
 	useEffect(() => {
 		if (!didMount.current) {
 			didMount.current = true;
 			return;
 		}
-
-		giveCountToParent(foodCount);
-		giveMonthDataToParent([foodName, foodCount]);
+		giveMonthDataToParent([foodName, count]);
 	}, []);
 
 	useEffect(() => {
@@ -36,14 +31,15 @@ function Food({
 			updatedServingsDidMount.current = true;
 			return;
 		}
-		if (foodCount < 0) {
+		if (count < 0) {
 			srMessage(`No ${foodName} to remove`);
 		} else {
 			srMessage(`1 ${foodName} ${action}`);
-			srMessage(`${foodCount} total ${foodName}`);
+			srMessage(`${count} total ${foodName}`);
 		}
-		getUpdatedServings({ foodName, foodCount });
-	}, [foodCount]);
+		getUpdatedServings([foodName, count]);
+		giveCountToParent(count);
+	}, [count]);
 
 	function srMessage(message) {
 		document.getElementById('alert').append(message);
@@ -53,26 +49,25 @@ function Food({
 	}
 
 	function handleAddClick() {
-		if (foodCount < 0) {
+		if (count < 0) {
 			setCount(0);
 		}
-		setCount((foodCount) => foodCount + 1);
+		setCount((count) => count + 1);
 		onFoodChange(foodName);
 		onActionChange('added');
 	}
 
 	function handleRemoveClick() {
-		setCount((foodCount) => foodCount - 1);
+		setCount((count) => count - 1);
 		onFoodChange(foodName);
 		onActionChange('removed');
 	}
 
 	function createCheckmarks() {
-		if (foodCount > 0) {
-			let checkmarksArr = new Array(foodCount);
+		if (count > 0) {
+			let checkmarksArr = new Array(count);
 
-			for (let i = 0; i < foodCount; i++)
-				checkmarksArr.push(<Checkmark key={i} />);
+			for (let i = 0; i < count; i++) checkmarksArr.push(<Checkmark key={i} />);
 
 			return checkmarksArr;
 		}
@@ -104,7 +99,7 @@ function Food({
 			<div className="flex align-middle flex-wrap">{checkmarks}</div>
 			<div className="">
 				<p className="text-base inline-block align-middle">
-					<strong>Total:</strong> {foodCount >= 0 ? foodCount : 0}
+					<strong>Total:</strong> {count >= 0 ? count : 0}
 				</p>
 			</div>
 		</div>

@@ -16,7 +16,7 @@ import './App.scss';
 function App() {
 	const [month, setMonth] = useState('');
 	const [foodsList, setFoodsList] = useState('');
-	const [step, setStep] = useState('chart');
+	const [step, setStep] = useState('start');
 	const [food, setFood] = useState('');
 	const [action, setAction] = useState(null);
 	const [count, setCount] = useState(0);
@@ -72,7 +72,7 @@ function App() {
 	function handleStartOverClick() {
 		setMonth('');
 		setFoodsList('');
-		setStep('chart');
+		setStep('start');
 		setFood('');
 		setAction(null);
 		setFinalServings([]);
@@ -88,10 +88,10 @@ function App() {
 	}
 	function handleUpdatedServings(updatedServing) {
 		const finalServings = initialServings.map((serving) => {
-			if (serving.food === updatedServing.food) {
-				serving.count = updatedServing.count;
-				if (serving.count < 0) {
-					serving.count = 0;
+			if (serving[0] === updatedServing[0]) {
+				serving[1] = updatedServing[1];
+				if (serving[1] < 0) {
+					serving[1] = 0;
 				}
 				return serving;
 			} else {
@@ -133,7 +133,7 @@ function App() {
 			{step === 'chart' && <UserSettings month={month} foodsList={foodsList} />}
 
 			{step === 'chart' && (
-				<TrackerInstructions food={food} action={action} count={count} />
+				<TrackerInstructions food={food[0]} action={action} count={count} />
 			)}
 
 			{/* {step === 'chart' && <TrackerChart />} */}
