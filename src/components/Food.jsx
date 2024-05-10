@@ -12,10 +12,14 @@ function Food({
 	giveMonthDataToParent,
 	getUpdatedServings,
 }) {
-	const [count, setCount] = useState(0);
+	// const [count, setCount] = useState(0);
 
 	const didMount = useRef(false);
 	const updatedServingsDidMount = useRef(false);
+	const foodName = food[0];
+	const foodCount = food[1];
+
+	console.log('foodName: ', foodName);
 
 	useEffect(() => {
 		if (!didMount.current) {
@@ -23,8 +27,8 @@ function Food({
 			return;
 		}
 
-		giveCountToParent(count);
-		giveMonthDataToParent({ food, count });
+		giveCountToParent(foodCount);
+		giveMonthDataToParent([foodName, foodCount]);
 	}, []);
 
 	useEffect(() => {
@@ -32,14 +36,14 @@ function Food({
 			updatedServingsDidMount.current = true;
 			return;
 		}
-		if (count < 0) {
-			srMessage(`No ${food} to remove`);
+		if (foodCount < 0) {
+			srMessage(`No ${foodName} to remove`);
 		} else {
-			srMessage(`1 ${food} ${action}`);
-			srMessage(`${count} total ${food}`);
+			srMessage(`1 ${foodName} ${action}`);
+			srMessage(`${foodCount} total ${foodName}`);
 		}
-		getUpdatedServings({ food, count });
-	}, [count]);
+		getUpdatedServings({ foodName, foodCount });
+	}, [foodCount]);
 
 	function srMessage(message) {
 		document.getElementById('alert').append(message);
@@ -49,25 +53,26 @@ function Food({
 	}
 
 	function handleAddClick() {
-		if (count < 0) {
+		if (foodCount < 0) {
 			setCount(0);
 		}
-		setCount((count) => count + 1);
-		onFoodChange(food);
+		setCount((foodCount) => foodCount + 1);
+		onFoodChange(foodName);
 		onActionChange('added');
 	}
 
 	function handleRemoveClick() {
-		setCount((count) => count - 1);
-		onFoodChange(food);
+		setCount((foodCount) => foodCount - 1);
+		onFoodChange(foodName);
 		onActionChange('removed');
 	}
 
 	function createCheckmarks() {
-		if (count > 0) {
-			let checkmarksArr = new Array(count);
+		if (foodCount > 0) {
+			let checkmarksArr = new Array(foodCount);
 
-			for (let i = 0; i < count; i++) checkmarksArr.push(<Checkmark key={i} />);
+			for (let i = 0; i < foodCount; i++)
+				checkmarksArr.push(<Checkmark key={i} />);
 
 			return checkmarksArr;
 		}
@@ -82,24 +87,24 @@ function Food({
 					className="inline-block bg-green-500 hover:bg-green-700 text-white py-1/2 px-1 rounded transition-colors text-base antialiased font-medium uppercase mr-2"
 					onClick={() => handleAddClick()}
 				>
-					Add <span className="sr-only">1 serving of {food}</span>
+					Add <span className="sr-only">1 serving of {foodName}</span>
 				</button>
 				<button
 					className="inline-block bg-slate-500 hover:bg-slate-700 text-white py-1/2 px-1 rounded transition-colors text-base antialiased font-medium uppercase"
 					onClick={() => handleRemoveClick()}
 				>
-					Remove <span className="sr-only">1 serving of {food}</span>
+					Remove <span className="sr-only">1 serving of {foodName}</span>
 				</button>
 			</div>
 			<div className="tracker__food-wrapper">
 				<span className="tracker__food-text mr-2 text-right text-base">
-					{food}
+					{foodName}
 				</span>
 			</div>
 			<div className="flex align-middle flex-wrap">{checkmarks}</div>
 			<div className="">
 				<p className="text-base inline-block align-middle">
-					<strong>Total:</strong> {count >= 0 ? count : 0}
+					<strong>Total:</strong> {foodCount >= 0 ? foodCount : 0}
 				</p>
 			</div>
 		</div>

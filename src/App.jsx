@@ -16,7 +16,7 @@ import './App.scss';
 function App() {
 	const [month, setMonth] = useState('');
 	const [foodsList, setFoodsList] = useState('');
-	const [step, setStep] = useState('start');
+	const [step, setStep] = useState('chart');
 	const [food, setFood] = useState('');
 	const [action, setAction] = useState(null);
 	const [count, setCount] = useState(0);
@@ -72,7 +72,7 @@ function App() {
 	function handleStartOverClick() {
 		setMonth('');
 		setFoodsList('');
-		setStep('start');
+		setStep('chart');
 		setFood('');
 		setAction(null);
 		setFinalServings([]);
