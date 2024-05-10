@@ -24,8 +24,7 @@ function App() {
 	const [finalServings, setFinalServings] = useState([]);
 	const [storedMonths, setStoredMonths] = useState([]);
 
-	const didMount = useRef(false);
-	const storedMonthsRendered = useRef(false);
+	const storedMonthsLoaded = useRef(false);
 
 	function getLocalStorageItems() {
 		const storedMonths = [];
@@ -36,23 +35,17 @@ function App() {
 				storedMonths.push(month);
 			}
 		}
+		console.log(storedMonths);
 		setStoredMonths(storedMonths);
 	}
 
 	useEffect(() => {
-		if (!storedMonthsRendered.current) {
-			storedMonthsRendered.current = true;
-			return;
-		}
-	}, []);
-
-	useEffect(() => {
-		if (!didMount.current) {
-			didMount.current = true;
+		if (!storedMonthsLoaded.current) {
+			storedMonthsLoaded.current = true;
 			return;
 		}
 		getLocalStorageItems();
-	}, [initialServings]);
+	}, []);
 
 	function srMessage(message) {
 		document.getElementById('alert').append(message);
