@@ -139,10 +139,36 @@ function App() {
 			{/* {step === 'chart' && <TrackerChart />} */}
 
 			{step === 'chart' && (
-				<div className="tracker__chart p-3">
-					<div className="tracker__user-options mb-5">
+				<>
+					<div className="tracker__chart p-3">
+						{dailyDozenArr.map((food, i) => {
+							return (
+								<Food
+									key={i}
+									food={food}
+									action={action}
+									month={month}
+									onFoodChange={() => {
+										updateFood(food);
+									}}
+									onActionChange={(action) => {
+										handleActionChange(action);
+									}}
+									srMessage={(food, action) => srMessage(food, action)}
+									giveCountToParent={(count) => giveCountToParent(count)}
+									giveMonthDataToParent={(foodAndCount) =>
+										giveMonthDataToParent(foodAndCount)
+									}
+									getUpdatedServings={(updatedServings) => {
+										handleUpdatedServings(updatedServings);
+									}}
+								/>
+							);
+						})}
+					</div>
+					<div className="tracker__user-options p-3">
 						<button
-							className="inline-block bg-green-500 hover:bg-green-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase mr-2"
+							className="inline-block bg-green-500 hover:bg-green-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase my-2"
 							onClick={() => {
 								handleSaveMonthClick();
 							}}
@@ -150,32 +176,13 @@ function App() {
 							Save Month
 						</button>
 					</div>
-					{dailyDozenArr.map((food, i) => {
-						return (
-							<Food
-								key={i}
-								food={food}
-								action={action}
-								month={month}
-								onFoodChange={() => {
-									updateFood(food);
-								}}
-								onActionChange={(action) => {
-									handleActionChange(action);
-								}}
-								srMessage={(food, action) => srMessage(food, action)}
-								giveCountToParent={(count) => giveCountToParent(count)}
-								giveMonthDataToParent={(foodAndCount) =>
-									giveMonthDataToParent(foodAndCount)
-								}
-								getUpdatedServings={(updatedServings) => {
-									handleUpdatedServings(updatedServings);
-								}}
-							/>
-						);
-					})}
-				</div>
+				</>
 			)}
+
+			<div className="tracker__saved-charts-container p-3">
+				<hr className="w-100 min-h-1 my-1 bg-gray-300 border-0 rounded"></hr>
+			</div>
+			<h2 className="p-3">Saved Charts</h2>
 		</>
 	);
 }
