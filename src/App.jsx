@@ -22,16 +22,36 @@ function App() {
 	const [count, setCount] = useState(0);
 	const [initialServings, setInitialServings] = useState([]);
 	const [finalServings, setFinalServings] = useState([]);
+	const [storedMonths, setStoredMonths] = useState([]);
 
 	const didMount = useRef(false);
+	const storedMonthsRendered = useRef(false);
+
+	function getLocalStorageItems() {
+		const storedMonths = [];
+		for (const keyName in localStorage) {
+			if (!localStorage.hasOwnProperty(keyName)) continue;
+			if (keyName.indexOf('hntd_month') !== -1) {
+				const month = keyName.split('_')[2];
+				storedMonths.push(month);
+			}
+		}
+		setStoredMonths(storedMonths);
+	}
+
+	useEffect(() => {
+		if (!storedMonthsRendered.current) {
+			storedMonthsRendered.current = true;
+			return;
+		}
+	}, []);
 
 	useEffect(() => {
 		if (!didMount.current) {
 			didMount.current = true;
 			return;
 		}
-		// console.log('food is: ', food);
-		// console.log('count is: ', count);
+		getLocalStorageItems();
 	}, [initialServings]);
 
 	function srMessage(message) {
@@ -103,6 +123,7 @@ function App() {
 	function handleSaveMonthClick() {
 		localStorage.setItem(`hntd_month_${month}`, JSON.stringify(finalServings));
 	}
+
 	return (
 		<>
 			<Header step={step} />
