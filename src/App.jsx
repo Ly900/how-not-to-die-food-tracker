@@ -20,11 +20,7 @@ function App() {
 	const [step, setStep] = useState('chart');
 	const [food, setFood] = useState('');
 	const [action, setAction] = useState(null);
-	// const [count, setCount] = useState(0);
-	// const [initialServings, setInitialServings] = useState([]);
-	// const [finalServings, setFinalServings] = useState([]);
 	const [storedMonths, setStoredMonths] = useState([]);
-	/**  */
 	const [jsonToRender, setJsonToRender] = useState([]);
 	const [negativeServings, setNegativeServings] = useState(false);
 
