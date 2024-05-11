@@ -20,10 +20,11 @@ function App() {
 	const [step, setStep] = useState('start');
 	const [food, setFood] = useState('');
 	const [action, setAction] = useState(null);
-	const [count, setCount] = useState(0);
+	// const [count, setCount] = useState(0);
 	const [initialServings, setInitialServings] = useState([]);
 	const [finalServings, setFinalServings] = useState([]);
 	const [storedMonths, setStoredMonths] = useState([]);
+	/**  */
 	const [jsonToRender, setJsonToRender] = useState([]);
 
 	const storedMonthsLoaded = useRef(false);
@@ -145,7 +146,7 @@ function App() {
 		// setFinalServings((prevFinalServings) => [...finalServings, neededData[0]]);
 		if (month === 'May') {
 			setJsonToRender(mayArr);
-		} else if (month === 'June') {
+		} else if (month === 'DailyDozen') {
 			setJsonToRender(dailyDozenArr);
 		}
 	}
@@ -158,7 +159,24 @@ function App() {
 
 	getJsonToRender();
 
-	console.log('jsonToRender: ', jsonToRender);
+	// console.log('jsonToRender: ', jsonToRender);
+
+	function increaseServings(foodName, newServings) {
+		console.log('foodName: ', foodName);
+		console.log('newServings: ', newServings);
+		const newServingsArr = jsonToRender.map((foodArr) => {
+			if (foodArr[0] === foodName) {
+				foodArr[1] = newServings;
+				if (foodArr[1] < 0) {
+					foodArr[1] = 0;
+				}
+				return foodArr;
+			} else {
+				return foodArr;
+			}
+		});
+		setJsonToRender(newServingsArr);
+	}
 
 	return (
 		<>
@@ -223,7 +241,9 @@ function App() {
 						);
 					})} */}
 					{jsonToRender.map((food, i) => {
-						return <Food food={food} />;
+						return (
+							<Food food={food} key={i} increaseServings={increaseServings} />
+						);
 					})}
 				</div>
 				<div className="tracker__user-options p-3">
