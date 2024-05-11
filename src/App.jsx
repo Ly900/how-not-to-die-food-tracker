@@ -118,6 +118,22 @@ function App() {
 		setStoredMonths((prevStoredMonths) => [...storedMonths, month]);
 	}
 
+	function handleLoadMonthClick(month) {
+		console.log('month: ', month);
+		const neededData = [];
+		for (const keyName in localStorage) {
+			if (!localStorage.hasOwnProperty(keyName)) continue;
+			const neededMonth = `hntd_month_${month}`;
+			if (keyName.indexOf(neededMonth) !== -1) {
+				neededData.push(JSON.parse(localStorage[keyName]));
+			}
+		}
+		console.log('neededData: ', neededData[0]);
+		setFinalServings(neededData[0]);
+		setStep('chart');
+		setMonth(month);
+	}
+
 	return (
 		<>
 			<Header step={step} />
@@ -208,6 +224,7 @@ function App() {
 							<button
 								key={i}
 								className="mb-3 inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded transition-colors text-lg antialiased font-medium"
+								onClick={() => handleLoadMonthClick(month)}
 							>
 								<span className="sr-only">Load </span>
 								{month} <span className="sr-only">data</span>
