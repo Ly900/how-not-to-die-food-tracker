@@ -40,7 +40,6 @@ function Food({ food, increaseServings, decreaseServings }) {
 			<div className="">
 				<p className="text-base inline-block align-middle">
 					<strong>Total:</strong> {servings >= 0 ? servings : 0}
-					{/* <strong>Total:</strong> {servings} */}
 				</p>
 			</div>
 		</div>
