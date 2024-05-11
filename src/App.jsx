@@ -10,6 +10,7 @@ import TrackerInstructions from './components/TrackerInstructions';
 import FoodsListQuestion from './components/FoodsListQuestion';
 import Food from './components/Food';
 import dailyDozen from '../public/assets/dailyDozenFoods.json';
+import mayData from '../public/assets/may.json';
 
 import './App.scss';
 
@@ -23,6 +24,7 @@ function App() {
 	const [initialServings, setInitialServings] = useState([]);
 	const [finalServings, setFinalServings] = useState([]);
 	const [storedMonths, setStoredMonths] = useState([]);
+	const [jsonToRender, setJsonToRender] = useState([]);
 
 	const storedMonthsLoaded = useRef(false);
 
@@ -72,8 +74,6 @@ function App() {
 		setStep('chart');
 	}
 
-	const dailyDozenArr = dailyDozen.dailyDozenFoods;
-
 	function updateFood(food) {
 		setFood(food);
 	}
@@ -118,21 +118,47 @@ function App() {
 		setStoredMonths((prevStoredMonths) => [...storedMonths, month]);
 	}
 
+	const dailyDozenArr = dailyDozen.dailyDozen;
+	const mayArr = mayData.May;
+
 	function handleLoadMonthClick(month) {
-		console.log('month: ', month);
-		const neededData = [];
-		for (const keyName in localStorage) {
-			if (!localStorage.hasOwnProperty(keyName)) continue;
-			const neededMonth = `hntd_month_${month}`;
-			if (keyName.indexOf(neededMonth) !== -1) {
-				neededData.push(JSON.parse(localStorage[keyName]));
-			}
+		// const neededData = [];
+		// for (const keyName in localStorage) {
+		// 	if (!localStorage.hasOwnProperty(keyName)) continue;
+		// 	const neededMonth = `hntd_month_${month}`;
+		// 	if (keyName.indexOf(neededMonth) !== -1) {
+		// 		neededData.push(JSON.parse(localStorage[keyName]));
+		// 	}
+		// }
+		// console.log('neededData: ', neededData[0]);
+		// setStep('chart');
+		// setMonth(month);
+		// setFoodsList('Daily Dozen');
+		// setTempMonthData(neededData[0]);
+		// setFinalServings((finalServings) => []);
+		// setFinalServings(neededData[0]);
+		// setInitialServings([]);
+		// setInitialServings([...finalServings, neededData[0]]);
+		// setFinalServings([...finalServings, neededData[0]]);
+		// setInitialServings(neededData[0]);
+		// setFinalServings(neededData[0]);
+		// setFinalServings((prevFinalServings) => [...finalServings, neededData[0]]);
+		if (month === 'May') {
+			setJsonToRender(mayArr);
+		} else if (month === 'June') {
+			setJsonToRender(dailyDozenArr);
 		}
-		console.log('neededData: ', neededData[0]);
-		setFinalServings(neededData[0]);
-		setStep('chart');
-		setMonth(month);
 	}
+
+	function getJsonToRender() {
+		if (jsonToRender.length === 0) {
+			setJsonToRender(dailyDozenArr);
+		}
+	}
+
+	getJsonToRender();
+
+	console.log('jsonToRender: ', jsonToRender);
 
 	return (
 		<>
@@ -169,46 +195,49 @@ function App() {
 
 			{/* {step === 'chart' && <TrackerChart />} */}
 
-			{step === 'chart' && (
-				<>
-					<div className="tracker__chart p-3">
-						{dailyDozenArr.map((food, i) => {
-							return (
-								<Food
-									key={i}
-									food={food}
-									action={action}
-									month={month}
-									onFoodChange={() => {
-										updateFood(food);
-									}}
-									onActionChange={(action) => {
-										handleActionChange(action);
-									}}
-									srMessage={(food, action) => srMessage(food, action)}
-									giveCountToParent={(count) => giveCountToParent(count)}
-									giveMonthDataToParent={(foodAndCount) =>
-										giveMonthDataToParent(foodAndCount)
-									}
-									getUpdatedServings={(updatedServings) => {
-										handleUpdatedServings(updatedServings);
-									}}
-								/>
-							);
-						})}
-					</div>
-					<div className="tracker__user-options p-3">
-						<button
-							className="inline-block bg-green-500 hover:bg-green-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase my-2"
-							onClick={() => {
-								handleSaveMonthClick();
-							}}
-						>
-							Save Month
-						</button>
-					</div>
-				</>
-			)}
+			{/* {step === 'chart' && ( */}
+			<>
+				<div className="tracker__chart p-3">
+					{/* {dataToRender.map((food, i) => {
+						return (
+							<Food
+								key={i}
+								food={food}
+								action={action}
+								month={month}
+								onFoodChange={() => {
+									updateFood(food);
+								}}
+								onActionChange={(action) => {
+									handleActionChange(action);
+								}}
+								srMessage={(food, action) => srMessage(food, action)}
+								giveCountToParent={(count) => giveCountToParent(count)}
+								giveMonthDataToParent={(foodAndCount) =>
+									giveMonthDataToParent(foodAndCount)
+								}
+								getUpdatedServings={(updatedServings) => {
+									handleUpdatedServings(updatedServings);
+								}}
+							/>
+						);
+					})} */}
+					{jsonToRender.map((food, i) => {
+						return <Food food={food} />;
+					})}
+				</div>
+				<div className="tracker__user-options p-3">
+					<button
+						className="inline-block bg-green-500 hover:bg-green-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase my-2"
+						onClick={() => {
+							handleSaveMonthClick();
+						}}
+					>
+						Save Month
+					</button>
+				</div>
+			</>
+			{/* )} */}
 
 			<div className="tracker__saved-charts-container p-3">
 				<hr className="w-100 min-h-1 my-1 mb-5 bg-gray-300 border-0 rounded"></hr>
