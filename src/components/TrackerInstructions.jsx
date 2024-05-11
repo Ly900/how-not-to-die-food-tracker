@@ -16,16 +16,16 @@ function TrackerInstructions({ food, action, count }) {
 						Nice! You've added 1 serving of <strong>{food}</strong>.
 					</p>
 				)}
-				{food && action === 'removed' && count >= 0 && (
+				{food && action === 'removed' /*&& count >= 0*/ && (
 					<p className="text-red-800">
 						You've removed 1 serving of <strong>{food}</strong>.
 					</p>
 				)}
-				{food && action === 'removed' && count < 0 && (
-					<p className="text-red-800">
+				{/* {food && action === 'removed' && (
+					count < 0 && <p className="text-red-800">
 						You have no <strong>{food}</strong> to remove.
 					</p>
-				)}
+				)} */}
 			</div>
 		</div>
 	);

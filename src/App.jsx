@@ -17,12 +17,12 @@ import './App.scss';
 function App() {
 	const [month, setMonth] = useState('');
 	const [foodsList, setFoodsList] = useState('');
-	const [step, setStep] = useState('start');
+	const [step, setStep] = useState('chart');
 	const [food, setFood] = useState('');
 	const [action, setAction] = useState(null);
 	// const [count, setCount] = useState(0);
-	const [initialServings, setInitialServings] = useState([]);
-	const [finalServings, setFinalServings] = useState([]);
+	// const [initialServings, setInitialServings] = useState([]);
+	// const [finalServings, setFinalServings] = useState([]);
 	const [storedMonths, setStoredMonths] = useState([]);
 	/**  */
 	const [jsonToRender, setJsonToRender] = useState([]);
@@ -167,17 +167,17 @@ function App() {
 	}
 
 	function increaseServings(foodName, newServings) {
-		console.log('foodName: ', foodName);
-		console.log('newServings: ', newServings);
 		const newServingsArr = modifyJsonToModifyArr(foodName, newServings);
 		setJsonToRender(newServingsArr);
+		setFood(foodName);
+		setAction('added');
 	}
 
 	function decreaseServings(foodName, newServings) {
-		console.log('foodName: ', foodName);
-		console.log('newServings: ', newServings);
 		const newServingsArr = modifyJsonToModifyArr(foodName, newServings);
 		setJsonToRender(newServingsArr);
+		setFood(foodName);
+		setAction('removed');
 	}
 
 	function getJsonToRender() {
@@ -218,7 +218,7 @@ function App() {
 			{step === 'chart' && <UserSettings month={month} foodsList={foodsList} />}
 
 			{step === 'chart' && (
-				<TrackerInstructions food={food[0]} action={action} count={count} />
+				<TrackerInstructions food={food} action={action} /* count={count}*/ />
 			)}
 
 			{/* {step === 'chart' && <TrackerChart />} */}
@@ -272,7 +272,6 @@ function App() {
 					</button>
 				</div>
 			</>
-			{/* )} */}
 
 			<div className="tracker__saved-charts-container p-3">
 				<hr className="w-100 min-h-1 my-1 mb-5 bg-gray-300 border-0 rounded"></hr>

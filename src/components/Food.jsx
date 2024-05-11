@@ -15,6 +15,18 @@ function Food({ food, increaseServings, decreaseServings }) {
 		servings = servings - 1;
 		decreaseServings(foodName, servings);
 	}
+	function createCheckmarks(servings) {
+		if (servings > 0) {
+			let checkmarksArr = new Array(servings);
+
+			for (let i = 0; i < servings; i++)
+				checkmarksArr.push(<Checkmark key={i} />);
+
+			return checkmarksArr;
+		}
+	}
+
+	const checkmarks = createCheckmarks(servings);
 	return (
 		<div className="tracker__row border-b-2 mb-2 pb-1">
 			<div className="tracker__chart-buttons">
@@ -36,7 +48,7 @@ function Food({ food, increaseServings, decreaseServings }) {
 					{foodName}
 				</span>
 			</div>
-			<div className="flex align-middle flex-wrap">{/* {checkmarks} */}</div>
+			<div className="flex align-middle flex-wrap">{checkmarks}</div>
 			<div className="">
 				<p className="text-base inline-block align-middle">
 					<strong>Total:</strong> {servings >= 0 ? servings : 0}
