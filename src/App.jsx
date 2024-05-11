@@ -200,6 +200,18 @@ function App() {
 				</h2>
 
 				{storedMonths.length === 0 && <p>No stored months.</p>}
+
+				<div className="tracker__month-btns-container flex gap-2">
+					{storedMonths.length > 0 &&
+						storedMonths.map((month, i) => (
+							<button
+								key={i}
+								className="mb-3 inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded transition-colors text-lg antialiased font-medium"
+							>
+								{month}
+							</button>
+						))}
+				</div>
 			</div>
 		</>
 	);
