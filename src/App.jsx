@@ -22,20 +22,24 @@ function App() {
 	const [count, setCount] = useState(0);
 	const [initialServings, setInitialServings] = useState([]);
 	const [finalServings, setFinalServings] = useState([]);
+	const [storedMonthsKeys, setStoredMonthsKeys] = useState([]);
 	const [storedMonths, setStoredMonths] = useState([]);
 
 	const storedMonthsLoaded = useRef(false);
 
 	function getLocalStorageItems() {
+		const storedMonthKeys = [];
 		const storedMonths = [];
 		for (const keyName in localStorage) {
 			if (!localStorage.hasOwnProperty(keyName)) continue;
 			if (keyName.indexOf('hntd_month') !== -1) {
-				const month = keyName.split('_')[2];
-				storedMonths.push(month);
+				storedMonthKeys.push(keyName);
+				const cleanMonth = keyName.split('_')[2];
+				storedMonths.push(cleanMonth);
 			}
 		}
-		console.log(storedMonths);
+		console.log(storedMonthKeys);
+		setStoredMonthsKeys(storedMonthKeys);
 		setStoredMonths(storedMonths);
 	}
 
