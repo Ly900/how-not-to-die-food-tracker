@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 import Checkmark from './Checkmark';
 
-function Food({ food, increaseServings }) {
+function Food({ food, increaseServings, decreaseServings }) {
 	const foodName = food[0];
 	let servings = food[1];
 
@@ -11,7 +11,10 @@ function Food({ food, increaseServings }) {
 		servings = servings + 1;
 		increaseServings(foodName, servings);
 	}
-	function handleRemoveClick() {}
+	function handleRemoveClick() {
+		servings = servings - 1;
+		decreaseServings(foodName, servings);
+	}
 	return (
 		<div className="tracker__row border-b-2 mb-2 pb-1">
 			<div className="tracker__chart-buttons">
@@ -36,8 +39,8 @@ function Food({ food, increaseServings }) {
 			<div className="flex align-middle flex-wrap">{/* {checkmarks} */}</div>
 			<div className="">
 				<p className="text-base inline-block align-middle">
-					{/* <strong>Total:</strong> {servings >= 0 ? servings : 0} */}
-					<strong>Total:</strong> {servings}
+					<strong>Total:</strong> {servings >= 0 ? servings : 0}
+					{/* <strong>Total:</strong> {servings} */}
 				</p>
 			</div>
 		</div>

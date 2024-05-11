@@ -151,19 +151,7 @@ function App() {
 		}
 	}
 
-	function getJsonToRender() {
-		if (jsonToRender.length === 0) {
-			setJsonToRender(dailyDozenArr);
-		}
-	}
-
-	getJsonToRender();
-
-	// console.log('jsonToRender: ', jsonToRender);
-
-	function increaseServings(foodName, newServings) {
-		console.log('foodName: ', foodName);
-		console.log('newServings: ', newServings);
+	function modifyJsonToModifyArr(foodName, newServings) {
 		const newServingsArr = jsonToRender.map((foodArr) => {
 			if (foodArr[0] === foodName) {
 				foodArr[1] = newServings;
@@ -175,8 +163,30 @@ function App() {
 				return foodArr;
 			}
 		});
+		return newServingsArr;
+	}
+
+	function increaseServings(foodName, newServings) {
+		console.log('foodName: ', foodName);
+		console.log('newServings: ', newServings);
+		const newServingsArr = modifyJsonToModifyArr(foodName, newServings);
 		setJsonToRender(newServingsArr);
 	}
+
+	function decreaseServings(foodName, newServings) {
+		console.log('foodName: ', foodName);
+		console.log('newServings: ', newServings);
+		const newServingsArr = modifyJsonToModifyArr(foodName, newServings);
+		setJsonToRender(newServingsArr);
+	}
+
+	function getJsonToRender() {
+		if (jsonToRender.length === 0) {
+			setJsonToRender(dailyDozenArr);
+		}
+	}
+
+	getJsonToRender();
 
 	return (
 		<>
@@ -242,7 +252,12 @@ function App() {
 					})} */}
 					{jsonToRender.map((food, i) => {
 						return (
-							<Food food={food} key={i} increaseServings={increaseServings} />
+							<Food
+								food={food}
+								key={i}
+								increaseServings={increaseServings}
+								decreaseServings={decreaseServings}
+							/>
 						);
 					})}
 				</div>
