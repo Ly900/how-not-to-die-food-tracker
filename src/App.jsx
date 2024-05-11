@@ -47,13 +47,6 @@ function App() {
 		getLocalStorageItems();
 	}, []);
 
-	function srMessage(message) {
-		document.getElementById('alert').append(message);
-		setTimeout(() => {
-			document.getElementById('alert').innerHTML = '';
-		}, 500);
-	}
-
 	function handleStartClick() {
 		setStep('month');
 	}
@@ -72,14 +65,6 @@ function App() {
 		setStep('chart');
 	}
 
-	function updateFood(food) {
-		setFood(food);
-	}
-
-	function handleActionChange(action) {
-		setAction(action);
-	}
-
 	function handleStartOverClick() {
 		setMonth('');
 		setFoodsList('');
@@ -87,15 +72,6 @@ function App() {
 		setFood('');
 		setAction(null);
 		setJsonToRender([]);
-	}
-	function giveCountToParent(count) {
-		setCount(count);
-	}
-	const foodAndCountArray = [];
-
-	function giveMonthDataToParent(foodAndCount) {
-		foodAndCountArray.push(foodAndCount);
-		setInitialServings(foodAndCountArray);
 	}
 	function handleUpdatedServings(updatedServing) {
 		const finalServings = initialServings.map((serving) => {
@@ -129,18 +105,6 @@ function App() {
 		// 	}
 		// }
 		// console.log('neededData: ', neededData[0]);
-		// setStep('chart');
-		// setMonth(month);
-		// setFoodsList('Daily Dozen');
-		// setTempMonthData(neededData[0]);
-		// setFinalServings((finalServings) => []);
-		// setFinalServings(neededData[0]);
-		// setInitialServings([]);
-		// setInitialServings([...finalServings, neededData[0]]);
-		// setFinalServings([...finalServings, neededData[0]]);
-		// setInitialServings(neededData[0]);
-		// setFinalServings(neededData[0]);
-		// setFinalServings((prevFinalServings) => [...finalServings, neededData[0]]);
 		if (month === 'May') {
 			setJsonToRender(mayArr);
 		} else if (month === 'DailyDozen') {
@@ -230,30 +194,6 @@ function App() {
 			{/* {step === 'chart' && ( */}
 			<>
 				<div className="tracker__chart p-3">
-					{/* {dataToRender.map((food, i) => {
-						return (
-							<Food
-								key={i}
-								food={food}
-								action={action}
-								month={month}
-								onFoodChange={() => {
-									updateFood(food);
-								}}
-								onActionChange={(action) => {
-									handleActionChange(action);
-								}}
-								srMessage={(food, action) => srMessage(food, action)}
-								giveCountToParent={(count) => giveCountToParent(count)}
-								giveMonthDataToParent={(foodAndCount) =>
-									giveMonthDataToParent(foodAndCount)
-								}
-								getUpdatedServings={(updatedServings) => {
-									handleUpdatedServings(updatedServings);
-								}}
-							/>
-						);
-					})} */}
 					{jsonToRender.map((food, i) => {
 						return (
 							<Food
