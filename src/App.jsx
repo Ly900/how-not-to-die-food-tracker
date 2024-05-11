@@ -115,6 +115,7 @@ function App() {
 	}
 	function handleSaveMonthClick() {
 		localStorage.setItem(`hntd_month_${month}`, JSON.stringify(finalServings));
+		setStoredMonths((prevStoredMonths) => [...storedMonths, month]);
 	}
 
 	return (
