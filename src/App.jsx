@@ -86,7 +86,7 @@ function App() {
 		setStep('start');
 		setFood('');
 		setAction(null);
-		setFinalServings([]);
+		setJsonToRender([]);
 	}
 	function giveCountToParent(count) {
 		setCount(count);
@@ -221,7 +221,7 @@ function App() {
 				<TrackerInstructions
 					food={food}
 					action={action}
-					/* count={count}*/ negativeServings={negativeServings}
+					negativeServings={negativeServings}
 				/>
 			)}
 
@@ -257,8 +257,9 @@ function App() {
 					{jsonToRender.map((food, i) => {
 						return (
 							<Food
-								food={food}
 								key={i}
+								action={action}
+								food={food}
 								increaseServings={increaseServings}
 								decreaseServings={decreaseServings}
 							/>

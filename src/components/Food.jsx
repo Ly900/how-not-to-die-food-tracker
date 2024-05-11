@@ -3,17 +3,32 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 import Checkmark from './Checkmark';
 
-function Food({ food, increaseServings, decreaseServings }) {
+function Food({ action, food, increaseServings, decreaseServings }) {
 	const foodName = food[0];
 	let servings = food[1];
+
+	function srMessage(message) {
+		document.getElementById('alert').append(message);
+		setTimeout(() => {
+			document.getElementById('alert').innerHTML = '';
+		}, 500);
+	}
 
 	function handleAddClick() {
 		servings = servings + 1;
 		increaseServings(foodName, servings);
+		srMessage(`1 ${foodName} ${action}`);
+		srMessage(`${servings} total ${foodName}`);
 	}
 	function handleRemoveClick() {
 		servings = servings - 1;
 		decreaseServings(foodName, servings);
+		if (servings < 0) {
+			srMessage(`No ${foodName} to remove`);
+		} else {
+			srMessage(`1 ${foodName} ${action}`);
+			srMessage(`${servings} total ${foodName}`);
+		}
 	}
 	function createCheckmarks(servings) {
 		if (servings > 0) {
