@@ -26,6 +26,7 @@ function App() {
 	const [storedMonths, setStoredMonths] = useState([]);
 	/**  */
 	const [jsonToRender, setJsonToRender] = useState([]);
+	const [negativeServings, setNegativeServings] = useState(false);
 
 	const storedMonthsLoaded = useRef(false);
 
@@ -157,6 +158,9 @@ function App() {
 				foodArr[1] = newServings;
 				if (foodArr[1] < 0) {
 					foodArr[1] = 0;
+					setNegativeServings(true);
+				} else {
+					setNegativeServings(false);
 				}
 				return foodArr;
 			} else {
@@ -218,7 +222,11 @@ function App() {
 			{step === 'chart' && <UserSettings month={month} foodsList={foodsList} />}
 
 			{step === 'chart' && (
-				<TrackerInstructions food={food} action={action} /* count={count}*/ />
+				<TrackerInstructions
+					food={food}
+					action={action}
+					/* count={count}*/ negativeServings={negativeServings}
+				/>
 			)}
 
 			{/* {step === 'chart' && <TrackerChart />} */}
