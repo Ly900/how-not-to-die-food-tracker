@@ -22,7 +22,6 @@ function App() {
 	const [count, setCount] = useState(0);
 	const [initialServings, setInitialServings] = useState([]);
 	const [finalServings, setFinalServings] = useState([]);
-	const [storedMonthsKeys, setStoredMonthsKeys] = useState([]);
 	const [storedMonths, setStoredMonths] = useState([]);
 
 	const storedMonthsLoaded = useRef(false);
@@ -33,13 +32,10 @@ function App() {
 		for (const keyName in localStorage) {
 			if (!localStorage.hasOwnProperty(keyName)) continue;
 			if (keyName.indexOf('hntd_month') !== -1) {
-				storedMonthKeys.push(keyName);
 				const cleanMonth = keyName.split('_')[2];
 				storedMonths.push(cleanMonth);
 			}
 		}
-		console.log(storedMonthKeys);
-		setStoredMonthsKeys(storedMonthKeys);
 		setStoredMonths(storedMonths);
 	}
 
@@ -206,14 +202,15 @@ function App() {
 
 				{storedMonths.length === 0 && <p>No stored months.</p>}
 
-				<div className="tracker__month-btns-container flex gap-2">
+				<div className="tracker__month-btns-container flex gap-2 flex-wrap">
 					{storedMonths.length > 0 &&
 						storedMonths.map((month, i) => (
 							<button
 								key={i}
 								className="mb-3 inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded transition-colors text-lg antialiased font-medium"
 							>
-								{month}
+								<span className="sr-only">Load </span>
+								{month} <span className="sr-only">data</span>
 							</button>
 						))}
 				</div>
