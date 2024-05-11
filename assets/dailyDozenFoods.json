@@ -1,16 +1,16 @@
 {
 	"dailyDozenFoods": [
-		"Beans",
-		"Berries",
-		"Other Fruits",
-		"Cruciferous Veggie",
-		"Greens",
-		"Other Veggie",
-		"Flaxseed",
-		"Nuts and Seeds",
-		"Turmeric",
-		"Whole Grains",
-		"Water or Tea",
-		"Exercise"
+		["Beans", 1],
+		["Berries", 2],
+		["Other Fruits", 3],
+		["Cruciferous Veggie", 4],
+		["Greens", 5],
+		["Other Veggie", 6],
+		["Flaxseed", 7],
+		["Nuts and Seeds", 8],
+		["Turmeric", 9],
+		["Whole Grains", 10],
+		["Water or Tea", 11],
+		["Exercise", 12]
 	]
 }
