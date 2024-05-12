@@ -22,7 +22,7 @@ function App() {
 	const [storedMonths, setStoredMonths] = useState([]);
 	const [jsonToRender, setJsonToRender] = useState([]);
 	const [negativeServings, setNegativeServings] = useState(false);
-	const [displayNotification, setDisplayNotification] = useState(false);
+	const [displayNotification, setDisplayNotification] = useState('');
 
 	const storedMonthsLoaded = useRef(false);
 
@@ -73,7 +73,7 @@ function App() {
 		setJsonToRender([]);
 	}
 	function handleSaveMonthClick() {
-		setDisplayNotification(false);
+		setDisplayNotification('saveMonth');
 		localStorage.setItem(`hntd_month_${month}`, JSON.stringify(jsonToRender));
 		if (storedMonths.includes(month)) {
 			return;
@@ -82,7 +82,7 @@ function App() {
 	}
 
 	function handleDeleteMonthClick() {
-		setDisplayNotification(false);
+		setDisplayNotification('deleteMonth');
 		for (const keyName in localStorage) {
 			if (!localStorage.hasOwnProperty(keyName)) continue;
 			const neededMonth = `hntd_month_${month}`;
@@ -107,7 +107,7 @@ function App() {
 		setMonth(month);
 		setStep('chart');
 		setJsonToRender(neededData[0]);
-		setDisplayNotification(false);
+		setDisplayNotification('loadMonth');
 	}
 
 	function modifyJsonToModifyArr(foodName, newServings) {
@@ -133,7 +133,7 @@ function App() {
 		setJsonToRender(newServingsArr);
 		setFood(foodName);
 		setAction('added');
-		setDisplayNotification(true);
+		setDisplayNotification('addServing');
 	}
 
 	function decreaseServings(foodName, newServings) {
@@ -141,7 +141,7 @@ function App() {
 		setJsonToRender(newServingsArr);
 		setFood(foodName);
 		setAction('removed');
-		setDisplayNotification(true);
+		setDisplayNotification('removeServing');
 	}
 
 	const dailyDozenArr = dailyDozen.dailyDozen;
@@ -187,6 +187,7 @@ function App() {
 				<TrackerInstructions
 					food={food}
 					action={action}
+					month={month}
 					negativeServings={negativeServings}
 					displayNotification={displayNotification}
 				/>

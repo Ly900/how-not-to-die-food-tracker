@@ -1,22 +1,19 @@
 function TrackerInstructions({
 	food,
-	action,
+	month,
 	negativeServings,
 	displayNotification,
 }) {
 	function getNotificationText() {
 		let notification;
-		if (!food || !displayNotification) {
-			notification = null;
-			return;
-		}
-		if (action === 'added') {
+
+		if (displayNotification === 'addServing') {
 			notification = (
 				<p className="text-green-800">
 					Nice! You've added 1 serving of <strong>{food}</strong>.
 				</p>
 			);
-		} else if (action === 'removed') {
+		} else if (displayNotification === 'removeServing') {
 			if (!negativeServings) {
 				notification = (
 					<p className="text-red-800">
@@ -30,8 +27,25 @@ function TrackerInstructions({
 					</p>
 				);
 			}
+		} else if (displayNotification === 'saveMonth') {
+			notification = (
+				<p className="text-green-800">
+					You've saved month <strong>{month}</strong>.
+				</p>
+			);
+		} else if (displayNotification === 'deleteMonth') {
+			notification = (
+				<p className="text-red-800">
+					You've deleted month <strong>{month}</strong>.
+				</p>
+			);
+		} else if (displayNotification === 'loadMonth') {
+			notification = (
+				<p className="text-green-800">
+					You've loaded month <strong>{month}</strong>.
+				</p>
+			);
 		}
-
 		return notification;
 	}
 
