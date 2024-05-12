@@ -82,7 +82,16 @@ function App() {
 	}
 
 	function handleDeleteMonthClick() {
-		console.log('handleDeleteMonthClick');
+		setDisplayNotification(false);
+		for (const keyName in localStorage) {
+			if (!localStorage.hasOwnProperty(keyName)) continue;
+			const neededMonth = `hntd_month_${month}`;
+			if (keyName.indexOf(neededMonth) !== -1) {
+				localStorage.removeItem(neededMonth);
+			}
+		}
+		const newMonths = storedMonths.filter((m) => m !== month);
+		setStoredMonths(newMonths);
 	}
 
 	function handleLoadMonthClick(month) {
