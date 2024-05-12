@@ -27,7 +27,6 @@ function App() {
 	const storedMonthsLoaded = useRef(false);
 
 	function getLocalStorageItems() {
-		const storedMonthKeys = [];
 		const storedMonths = [];
 		for (const keyName in localStorage) {
 			if (!localStorage.hasOwnProperty(keyName)) continue;
