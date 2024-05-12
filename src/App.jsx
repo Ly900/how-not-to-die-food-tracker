@@ -10,7 +10,6 @@ import TrackerInstructions from './components/TrackerInstructions';
 import FoodsListQuestion from './components/FoodsListQuestion';
 import Food from './components/Food';
 import dailyDozen from '../public/assets/dailyDozenFoods.json';
-import mayData from '../public/assets/may.json';
 
 import './App.scss';
 
@@ -72,20 +71,6 @@ function App() {
 		setFood('');
 		setAction(null);
 		setJsonToRender([]);
-	}
-	function handleUpdatedServings(updatedServing) {
-		const finalServings = initialServings.map((serving) => {
-			if (serving[0] === updatedServing[0]) {
-				serving[1] = updatedServing[1];
-				if (serving[1] < 0) {
-					serving[1] = 0;
-				}
-				return serving;
-			} else {
-				return serving;
-			}
-		});
-		setFinalServings(finalServings);
 	}
 	function handleSaveMonthClick() {
 		setDisplayNotification(false);
