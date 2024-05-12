@@ -9,6 +9,7 @@ Tools/Tech:
 - Vite (^5.2.0)
 - React (^18.2.0)
 - TailwindCSS (^3.4.3)
+- Flexbox
 - CSS grid
 
 Features:
