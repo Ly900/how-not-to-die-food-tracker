@@ -17,7 +17,7 @@ import './App.scss';
 function App() {
 	const [month, setMonth] = useState('');
 	const [foodsList, setFoodsList] = useState('');
-	const [step, setStep] = useState('chart');
+	const [step, setStep] = useState('start');
 	const [food, setFood] = useState('');
 	const [action, setAction] = useState(null);
 	const [storedMonths, setStoredMonths] = useState([]);
@@ -88,7 +88,10 @@ function App() {
 		setFinalServings(finalServings);
 	}
 	function handleSaveMonthClick() {
-		localStorage.setItem(`hntd_month_${month}`, JSON.stringify(finalServings));
+		localStorage.setItem(`hntd_month_${month}`, JSON.stringify(jsonToRender));
+		if (storedMonths.includes(month)) {
+			return;
+		}
 		setStoredMonths((prevStoredMonths) => [...storedMonths, month]);
 	}
 
@@ -191,32 +194,34 @@ function App() {
 
 			{/* {step === 'chart' && <TrackerChart />} */}
 
-			{/* {step === 'chart' && ( */}
-			<>
-				<div className="tracker__chart p-3">
-					{jsonToRender.map((food, i) => {
-						return (
-							<Food
-								key={i}
-								action={action}
-								food={food}
-								increaseServings={increaseServings}
-								decreaseServings={decreaseServings}
-							/>
-						);
-					})}
-				</div>
-				<div className="tracker__user-options p-3">
-					<button
-						className="inline-block bg-green-500 hover:bg-green-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase my-2"
-						onClick={() => {
-							handleSaveMonthClick();
-						}}
-					>
-						Save Month
-					</button>
-				</div>
-			</>
+			{step === 'chart' && (
+				<>
+					<div className="tracker__chart p-3">
+						{jsonToRender.map((food, i) => {
+							return (
+								<Food
+									key={i}
+									action={action}
+									food={food}
+									increaseServings={increaseServings}
+									decreaseServings={decreaseServings}
+								/>
+							);
+						})}
+					</div>
+
+					<div className="tracker__user-options p-3">
+						<button
+							className="inline-block bg-green-500 hover:bg-green-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase my-2"
+							onClick={() => {
+								handleSaveMonthClick();
+							}}
+						>
+							Save Month
+						</button>
+					</div>
+				</>
+			)}
 
 			<div className="tracker__saved-charts-container p-3">
 				<hr className="w-100 min-h-1 my-1 mb-5 bg-gray-300 border-0 rounded"></hr>
