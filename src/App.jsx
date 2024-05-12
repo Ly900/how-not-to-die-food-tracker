@@ -81,6 +81,10 @@ function App() {
 		setStoredMonths((prevStoredMonths) => [...storedMonths, month]);
 	}
 
+	function handleDeleteMonthClick() {
+		console.log('handleDeleteMonthClick');
+	}
+
 	function handleLoadMonthClick(month) {
 		const neededData = [];
 		for (const keyName in localStorage) {
@@ -199,12 +203,20 @@ function App() {
 
 					<div className="tracker__user-options p-3">
 						<button
-							className="inline-block bg-green-500 hover:bg-green-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase my-2"
+							className="inline-block bg-green-500 hover:bg-green-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase my-2 mr-2"
 							onClick={() => {
 								handleSaveMonthClick();
 							}}
 						>
 							Save Month
+						</button>
+						<button
+							className="inline-block bg-red-500 hover:bg-red-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase my-2"
+							onClick={() => {
+								handleDeleteMonthClick();
+							}}
+						>
+							Delete Month
 						</button>
 					</div>
 				</>
