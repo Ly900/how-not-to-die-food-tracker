@@ -104,9 +104,10 @@ function App() {
 				neededData.push(JSON.parse(localStorage[keyName]));
 			}
 		}
-		console.log('neededData: ', neededData);
-		setJsonToRender(neededData[0]);
+		setFoodsList('Daily Dozen');
 		setMonth(month);
+		setStep('chart');
+		setJsonToRender(neededData[0]);
 	}
 
 	function modifyJsonToModifyArr(foodName, newServings) {
