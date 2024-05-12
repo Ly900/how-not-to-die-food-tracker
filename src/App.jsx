@@ -95,24 +95,18 @@ function App() {
 		setStoredMonths((prevStoredMonths) => [...storedMonths, month]);
 	}
 
-	const dailyDozenArr = dailyDozen.dailyDozen;
-	const mayArr = mayData.May;
-
 	function handleLoadMonthClick(month) {
-		// const neededData = [];
-		// for (const keyName in localStorage) {
-		// 	if (!localStorage.hasOwnProperty(keyName)) continue;
-		// 	const neededMonth = `hntd_month_${month}`;
-		// 	if (keyName.indexOf(neededMonth) !== -1) {
-		// 		neededData.push(JSON.parse(localStorage[keyName]));
-		// 	}
-		// }
-		// console.log('neededData: ', neededData[0]);
-		if (month === 'May') {
-			setJsonToRender(mayArr);
-		} else if (month === 'DailyDozen') {
-			setJsonToRender(dailyDozenArr);
+		const neededData = [];
+		for (const keyName in localStorage) {
+			if (!localStorage.hasOwnProperty(keyName)) continue;
+			const neededMonth = `hntd_month_${month}`;
+			if (keyName.indexOf(neededMonth) !== -1) {
+				neededData.push(JSON.parse(localStorage[keyName]));
+			}
 		}
+		console.log('neededData: ', neededData);
+		setJsonToRender(neededData[0]);
+		setMonth(month);
 	}
 
 	function modifyJsonToModifyArr(foodName, newServings) {
@@ -146,6 +140,8 @@ function App() {
 		setFood(foodName);
 		setAction('removed');
 	}
+
+	const dailyDozenArr = dailyDozen.dailyDozen;
 
 	function getJsonToRender() {
 		if (jsonToRender.length === 0) {
