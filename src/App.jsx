@@ -117,7 +117,7 @@ function App() {
 		setDisplayNotification('loadMonth');
 	}
 
-	function modifyJsonToModifyArr(foodName, newServings) {
+	function modifyJsonToRenderArr(foodName, newServings) {
 		const newServingsArr = jsonToRender.map((foodArr) => {
 			if (foodArr[0] === foodName) {
 				foodArr[1] = newServings;
@@ -136,7 +136,7 @@ function App() {
 	}
 
 	function increaseServings(foodName, newServings) {
-		const newServingsArr = modifyJsonToModifyArr(foodName, newServings);
+		const newServingsArr = modifyJsonToRenderArr(foodName, newServings);
 		setJsonToRender(newServingsArr);
 		setFood(foodName);
 		setAction('added');
@@ -144,7 +144,7 @@ function App() {
 	}
 
 	function decreaseServings(foodName, newServings) {
-		const newServingsArr = modifyJsonToModifyArr(foodName, newServings);
+		const newServingsArr = modifyJsonToRenderArr(foodName, newServings);
 		setJsonToRender(newServingsArr);
 		setFood(foodName);
 		setAction('removed');
@@ -152,17 +152,24 @@ function App() {
 	}
 
 	function deleteFoodRow(foodName) {
-		console.log('foodName: ', foodName);
 		const newServingsArr = jsonToRender.filter((foodArr) => {
 			if (foodArr[0] !== foodName) {
 				return foodArr;
 			}
 		});
-		console.log('newServingsArr: ', newServingsArr);
 		setJsonToRender(newServingsArr);
 	}
 
-	function handleAddFoodClick() {}
+	function handleAddFoodClick(e) {
+		e.preventDefault();
+		const form = e.target;
+		const formData = new FormData(form);
+		const formJson = Object.fromEntries(formData.entries());
+		setJsonToRender((previousJsonToRender) => [
+			...jsonToRender,
+			[formJson['new-food'], 0],
+		]);
+	}
 
 	return (
 		<>
