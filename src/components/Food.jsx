@@ -64,13 +64,13 @@ function Food({ action, food, increaseServings, decreaseServings }) {
 					{foodName}
 				</span>
 			</div>
-			<div className="flex align-middle flex-wrap">{checkmarks}</div>
-			<div className="">
-				<p className="text-base inline-block align-middle">
+			<div className="flex flex-wrap">{checkmarks}</div>
+			<div className="grid place-items-center">
+				<p className="text-base inline-block">
 					<strong>Total:</strong> {servings >= 0 ? servings : 0}
 				</p>
 			</div>
-			<div className="flex">
+			<div className="grid place-items-center">
 				<XButton />
 			</div>
 		</div>
