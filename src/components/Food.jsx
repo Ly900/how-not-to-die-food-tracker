@@ -4,7 +4,13 @@ import { useRef } from 'react';
 import Checkmark from './Checkmark';
 import XButton from './XButton';
 
-function Food({ action, food, increaseServings, decreaseServings }) {
+function Food({
+	action,
+	food,
+	increaseServings,
+	decreaseServings,
+	deleteFoodRow,
+}) {
 	const foodName = food[0];
 	let servings = food[1];
 
@@ -42,6 +48,10 @@ function Food({ action, food, increaseServings, decreaseServings }) {
 		}
 	}
 
+	function handleDeleteFoodRow() {
+		deleteFoodRow(foodName);
+	}
+
 	const checkmarks = createCheckmarks(servings);
 	return (
 		<div className="tracker__row border-b-2 mb-2 pb-1">
@@ -71,7 +81,7 @@ function Food({ action, food, increaseServings, decreaseServings }) {
 				</p>
 			</div>
 			<div className="grid place-items-center">
-				<button>
+				<button onClick={handleDeleteFoodRow}>
 					<XButton />
 				</button>
 			</div>

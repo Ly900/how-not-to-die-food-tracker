@@ -23,6 +23,7 @@ function App() {
 	const [jsonToRender, setJsonToRender] = useState([]);
 	const [negativeServings, setNegativeServings] = useState(false);
 	const [displayNotification, setDisplayNotification] = useState('');
+	const [displayDefaultData, setDisplayDefaultData] = useState(true);
 
 	const storedMonthsLoaded = useRef(false);
 
@@ -43,7 +44,9 @@ function App() {
 			storedMonthsLoaded.current = true;
 			return;
 		}
+		const dailyDozenArr = dailyDozen.dailyDozen;
 		getLocalStorageItems();
+		setJsonToRender(dailyDozenArr);
 	}, []);
 
 	function handleStartClick() {
@@ -150,13 +153,25 @@ function App() {
 
 	const dailyDozenArr = dailyDozen.dailyDozen;
 
-	function getJsonToRender() {
-		if (jsonToRender.length === 0) {
-			setJsonToRender(dailyDozenArr);
-		}
+	function deleteFoodRow(foodName) {
+		console.log('foodName: ', foodName);
+		const newServingsArr = jsonToRender.filter((foodArr) => {
+			if (foodArr[0] !== foodName) {
+				return foodArr;
+			}
+		});
+		console.log('newServingsArr: ', newServingsArr);
+		setJsonToRender(newServingsArr);
 	}
 
-	getJsonToRender();
+	// function getJsonToRender() {
+	// 	console.log('getJsonToRender');
+	// 	if (displayDefaultData) {
+	// 		setJsonToRender(dailyDozenArr);
+	// 	}
+	// }
+
+	// getJsonToRender();
 
 	return (
 		<>
@@ -210,6 +225,7 @@ function App() {
 									food={food}
 									increaseServings={increaseServings}
 									decreaseServings={decreaseServings}
+									deleteFoodRow={deleteFoodRow}
 								/>
 							);
 						})}
