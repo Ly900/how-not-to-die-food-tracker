@@ -151,8 +151,6 @@ function App() {
 		setDisplayNotification('removeServing');
 	}
 
-	const dailyDozenArr = dailyDozen.dailyDozen;
-
 	function deleteFoodRow(foodName) {
 		console.log('foodName: ', foodName);
 		const newServingsArr = jsonToRender.filter((foodArr) => {
@@ -164,14 +162,7 @@ function App() {
 		setJsonToRender(newServingsArr);
 	}
 
-	// function getJsonToRender() {
-	// 	console.log('getJsonToRender');
-	// 	if (displayDefaultData) {
-	// 		setJsonToRender(dailyDozenArr);
-	// 	}
-	// }
-
-	// getJsonToRender();
+	function handleAddFoodClick() {}
 
 	return (
 		<>
@@ -230,6 +221,27 @@ function App() {
 							);
 						})}
 					</div>
+					<form
+						className="tracker__add-new-food-form mb-7 p-3"
+						onSubmit={handleAddFoodClick}
+					>
+						<label htmlFor="new-food" className="mr-3">
+							Add new food:
+						</label>
+						<input
+							type="text"
+							name="new-food"
+							id="new-food"
+							className="text-center border-b-2 border-lime-600 mr-3"
+							placeholder="Tacos"
+						/>
+						<button
+							className="inline-block bg-green-600 hover:bg-green-700 text-white py-1 px-2 rounded transition-colors text-base antialiased font-medium uppercase"
+							type="submit"
+						>
+							Submit
+						</button>
+					</form>
 
 					<div className="tracker__user-options p-3">
 						<button
