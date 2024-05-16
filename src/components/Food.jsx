@@ -71,7 +71,9 @@ function Food({ action, food, increaseServings, decreaseServings }) {
 				</p>
 			</div>
 			<div className="grid place-items-center">
-				<XButton />
+				<button>
+					<XButton />
+				</button>
 			</div>
 		</div>
 	);
