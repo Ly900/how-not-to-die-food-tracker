@@ -65,7 +65,10 @@ function App() {
 		setFoodsList('Daily Dozen');
 		setStep('chart');
 		const dailyDozenArr = dailyDozen.dailyDozen;
-		setJsonToRender(dailyDozenArr);
+		const newServingsArr = dailyDozenArr.map((foodArr) => {
+			return [foodArr[0], 0];
+		});
+		setJsonToRender(newServingsArr);
 	}
 
 	function handleStartOverClick() {
