@@ -70,7 +70,10 @@ function App() {
 		setStep('start');
 		setFood('');
 		setAction(null);
-		setJsonToRender([]);
+		const newEmptyJson = jsonToRender.map((food) => {
+			return [food[0], 0];
+		});
+		setJsonToRender(newEmptyJson);
 	}
 	function handleSaveMonthClick() {
 		setDisplayNotification('saveMonth');
