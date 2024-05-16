@@ -9,7 +9,7 @@ import UserSettings from './components/UserSettings';
 import TrackerInstructions from './components/TrackerInstructions';
 import FoodsListQuestion from './components/FoodsListQuestion';
 import Food from './components/Food';
-import dailyDozen from '../public/assets/dailyDozenFoods.json';
+import dailyDozen from '/src/assets/dailyDozenFoods.json';
 
 import './App.scss';
 
@@ -23,7 +23,6 @@ function App() {
 	const [jsonToRender, setJsonToRender] = useState([]);
 	const [negativeServings, setNegativeServings] = useState(false);
 	const [displayNotification, setDisplayNotification] = useState('');
-	const [displayDefaultData, setDisplayDefaultData] = useState(true);
 
 	const storedMonthsLoaded = useRef(false);
 
@@ -65,6 +64,8 @@ function App() {
 	function handleFoodsListClick() {
 		setFoodsList('Daily Dozen');
 		setStep('chart');
+		const dailyDozenArr = dailyDozen.dailyDozen;
+		setJsonToRender(dailyDozenArr);
 	}
 
 	function handleStartOverClick() {
@@ -74,10 +75,6 @@ function App() {
 		setFood('');
 		setAction(null);
 		setDisplayNotification('');
-		const newEmptyJson = jsonToRender.map((food) => {
-			return [food[0], 0];
-		});
-		setJsonToRender(newEmptyJson);
 	}
 	function handleSaveMonthClick() {
 		setDisplayNotification('saveMonth');
