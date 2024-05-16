@@ -70,6 +70,7 @@ function App() {
 		setStep('start');
 		setFood('');
 		setAction(null);
+		setDisplayNotification('');
 		const newEmptyJson = jsonToRender.map((food) => {
 			return [food[0], 0];
 		});
