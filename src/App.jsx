@@ -241,7 +241,7 @@ function App() {
 							type="text"
 							name="new-food"
 							id="new-food"
-							className="text-center border-b-2 border-lime-600 mr-3"
+							className="md:text-center border-b-2 border-lime-600 mr-3"
 							placeholder="Tacos"
 						/>
 						<button
