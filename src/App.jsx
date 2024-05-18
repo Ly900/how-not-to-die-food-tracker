@@ -56,6 +56,14 @@ function App() {
 		setJsonToRender(dailyDozenArr);
 	}, []);
 
+	function srMessage(message) {
+		console.log('srMessage');
+		document.getElementById('alert').append(message);
+		setTimeout(() => {
+			document.getElementById('alert').innerHTML = '';
+		}, 500);
+	}
+
 	function handleStartClick() {
 		setStep('month');
 		srMessage('New month started. Step 1: Enter a new month.');
@@ -95,6 +103,9 @@ function App() {
 	function handleSaveMonthClick() {
 		setDisplayNotification('saveMonth');
 		localStorage.setItem(`hntd_month_${month}`, JSON.stringify(jsonToRender));
+		const message = `Month ${month} saved`;
+		srMessage(message);
+		// If the month already exists in local storage, do not create a new month.
 		if (storedMonths.includes(month)) {
 			return;
 		}
@@ -211,12 +222,6 @@ function App() {
 		const message = `You've added a new food ${formJson['new-food']}`;
 		srMessage(message);
 	}
-	function srMessage(message) {
-		document.getElementById('alert').append(message);
-		setTimeout(() => {
-			document.getElementById('alert').innerHTML = '';
-		}, 500);
-	}
 
 	return (
 		<>
@@ -311,7 +316,7 @@ function App() {
 								handleSaveMonthClick();
 							}}
 						>
-							Save Month
+							Save Month <span className="sr-only">{month}</span>
 						</button>
 						<button
 							className="tracker__button inline-block bg-red-500 hover:bg-red-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase my-2"
