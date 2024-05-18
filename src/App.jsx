@@ -57,7 +57,6 @@ function App() {
 	}, []);
 
 	function srMessage(message) {
-		console.log('srMessage');
 		document.getElementById('alert').append(message);
 		setTimeout(() => {
 			document.getElementById('alert').innerHTML = '';
