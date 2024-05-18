@@ -58,10 +58,10 @@ function App() {
 
 	function handleNewMonthClick() {
 		setStep('month');
-		srMessage('New month started');
+		srMessage('New month started. Step 1: Enter a new month.');
 	}
 
-	function handleMonthClick(e) {
+	function handleNewMonthSubmitClick(e) {
 		e.preventDefault();
 		const form = e.target;
 		const formData = new FormData(form);
@@ -239,7 +239,11 @@ function App() {
 						<StartQuestion handleNewMonthClick={handleNewMonthClick} />
 					)}
 
-					{step === 'month' && <MonthQuestion handleClick={handleMonthClick} />}
+					{step === 'month' && (
+						<MonthQuestion
+							handleNewMonthSubmitClick={handleNewMonthSubmitClick}
+						/>
+					)}
 
 					{step === 'foodsList' && (
 						<FoodsListQuestion handleClick={handleFoodsListClick} />
