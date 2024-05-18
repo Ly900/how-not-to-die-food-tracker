@@ -123,6 +123,8 @@ function App() {
 		}
 		const newMonths = storedMonths.filter((m) => m !== month);
 		setStoredMonths(newMonths);
+		const message = `Month ${month} deleted.`;
+		srMessage(message);
 	}
 
 	function handleLoadMonthClick(e, month) {
