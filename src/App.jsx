@@ -115,7 +115,6 @@ function App() {
 
 	function handleLoadMonthClick(e, month) {
 		e.preventDefault();
-		// console.log('e: ', e);
 		const neededData = [];
 		for (const keyName in localStorage) {
 			if (!localStorage.hasOwnProperty(keyName)) continue;
