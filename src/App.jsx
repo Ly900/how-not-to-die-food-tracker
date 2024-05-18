@@ -163,11 +163,6 @@ function App() {
 			const infoLinkListContainer = document.getElementById(
 				'tracker__month-wrapper'
 			);
-			if (step !== 'start') {
-				infoLinkListContainer.scrollIntoView({
-					behavior: 'smooth',
-				});
-			}
 			infoLinkListContainer.focus({ preventScroll: true });
 		}, 500);
 	}
