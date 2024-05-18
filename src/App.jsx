@@ -56,8 +56,9 @@ function App() {
 		setJsonToRender(dailyDozenArr);
 	}, []);
 
-	function handleStartClick() {
+	function handleNewMonthClick() {
 		setStep('month');
+		srMessage('New month started');
 	}
 
 	function handleMonthClick(e) {
@@ -86,6 +87,7 @@ function App() {
 		setFood('');
 		setAction(null);
 		setDisplayNotification('');
+		srMessage("You've started over");
 	}
 	function handleSaveMonthClick() {
 		setDisplayNotification('saveMonth');
@@ -233,7 +235,9 @@ function App() {
 
 			{step !== 'chart' && (
 				<div className="tracker__questions mb-6 text-center">
-					{step === 'start' && <StartQuestion handleClick={handleStartClick} />}
+					{step === 'start' && (
+						<StartQuestion handleNewMonthClick={handleNewMonthClick} />
+					)}
 
 					{step === 'month' && <MonthQuestion handleClick={handleMonthClick} />}
 
