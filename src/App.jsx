@@ -166,6 +166,7 @@ function App() {
 		const newServingsArr = modifyJsonToRenderArr(foodName, newServings);
 		setJsonToRender(newServingsArr);
 		setFood(foodName);
+		setAction('added');
 		setDisplayNotification('addServing');
 		srMessage(`1 ${foodName} added`);
 		srMessage(`${newServings} total ${foodName}`);
@@ -181,7 +182,7 @@ function App() {
 			srMessage(`No ${foodName} to remove`);
 		} else {
 			srMessage(`1 ${foodName} removed`);
-			srMessage(`${servings} total ${foodName}`);
+			srMessage(`${newServings} total ${foodName}`);
 		}
 	}
 
