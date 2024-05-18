@@ -15,12 +15,12 @@ Tools/Tech:
 Functionality:
 - Create new month for tracking healthy food intake.
 - Load Daily Dozen recommended foods.
-  - Enhancement: Add custom foods.
+- Add custom foods.
 - Add servings.
 - Remove servings.
-- Save months to local storage.
-- Load previously saved months from local storage.
-- Delete month from local storage.
-- Screenreader announcements on adding and removing servings (testing most consistent in Safari Mac VoiceOver). 
+- Save data to local storage.
+- Load previously saved data from local storage.
+- Delete data from local storage.
+- Screenreader announcements (testing most consistent in Safari Mac VoiceOver). 
 
 Created May 2024
