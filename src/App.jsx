@@ -113,12 +113,6 @@ function App() {
 		setStoredMonths(newMonths);
 	}
 
-	function setFocusTo(element) {
-		console.log('setFocusTo');
-		// element.setAttribute('tab-index', '-1');
-		element.focus();
-	}
-
 	function handleLoadMonthClick(e, month) {
 		e.preventDefault();
 		// console.log('e: ', e);
