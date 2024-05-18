@@ -131,12 +131,17 @@ function App() {
 		setStep('chart');
 		setJsonToRender(neededData[0]);
 		setDisplayNotification('loadMonth');
-		const infoLinkListContainer = document.getElementById('tracker__month');
-		console.log('infoLinkListContainer: ', infoLinkListContainer);
-		infoLinkListContainer.scrollIntoView({
-			behavior: 'smooth',
-		});
-		infoLinkListContainer.focus({ preventScroll: true });
+		setTimeout(() => {
+			const infoLinkListContainer = document.getElementById(
+				'tracker__month-wrapper'
+			);
+			if (step !== 'start') {
+				infoLinkListContainer.scrollIntoView({
+					behavior: 'smooth',
+				});
+			}
+			infoLinkListContainer.focus({ preventScroll: true });
+		}, 500);
 	}
 
 	function modifyJsonToRenderArr(foodName, newServings) {
