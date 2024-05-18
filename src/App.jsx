@@ -158,6 +158,8 @@ function App() {
 			}
 		});
 		setJsonToRender(newServingsArr);
+		setFood(foodName);
+		setDisplayNotification('deletedFood');
 	}
 
 	function handleAddFoodClick(e) {

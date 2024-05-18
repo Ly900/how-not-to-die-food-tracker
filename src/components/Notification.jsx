@@ -36,6 +36,11 @@ function Notification({ displayNotification, food, month, negativeServings }) {
 					You've added a new food called <strong>{food}</strong>.
 				</p>
 			)}
+			{displayNotification === 'deletedFood' && (
+				<p className="text-red-800">
+					You've deleted <strong>{food}</strong>.
+				</p>
+			)}
 		</>
 	);
 }
