@@ -68,6 +68,8 @@ function App() {
 		const formJson = Object.fromEntries(formData.entries());
 		setMonth(formJson.month);
 		setStep('foodsList');
+		const message = `Month ${formJson.month} created. Step 2: Choose import option.`;
+		srMessage(message);
 	}
 
 	function handleFoodsListClick() {
