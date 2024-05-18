@@ -26,4 +26,4 @@
 - Delete data from local storage.
 - Screenreader announcements (testing most consistent in Safari Mac VoiceOver).
 
-**Created** May 2024
+Created May 2024
