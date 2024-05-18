@@ -280,6 +280,7 @@ function App() {
 					food={food}
 					action={action}
 					month={month}
+					foodsList={foodsList}
 					negativeServings={negativeServings}
 					displayNotification={displayNotification}
 				/>
