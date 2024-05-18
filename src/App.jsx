@@ -138,14 +138,19 @@ function App() {
 	function handleLoadMonthClick(e, month) {
 		e.preventDefault();
 		const neededData = [];
+		let neededFoodsListData;
 		for (const keyName in localStorage) {
 			if (!localStorage.hasOwnProperty(keyName)) continue;
 			const neededMonth = `hntd_month_${month}`;
 			if (keyName.indexOf(neededMonth) !== -1) {
 				neededData.push(JSON.parse(localStorage[keyName]));
 			}
+			const neededFoodsList = `hntd_${month}_foods_list`;
+			if (keyName.indexOf(neededFoodsList) !== -1) {
+				neededFoodsListData = JSON.parse(localStorage[keyName]);
+			}
 		}
-		setFoodsList('Daily Dozen');
+		setFoodsList(neededFoodsListData);
 		setMonth(month);
 		setStep('chart');
 		setJsonToRender(neededData[0]);
