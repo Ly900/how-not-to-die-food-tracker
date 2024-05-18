@@ -5,7 +5,6 @@ function FoodsListQuestion({ handleDailyDozenClick, srMessage }) {
 
 	function handleCustomClick() {
 		setCustomError(true);
-		srMessage('Custom functionality not yet available');
 	}
 	return (
 		<div className="tracker__step2-container bg-slate-100 p-4 pb-6 text-lg">
