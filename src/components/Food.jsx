@@ -54,7 +54,7 @@ function Food({
 
 	const checkmarks = createCheckmarks(servings);
 	return (
-		<div className="tracker__row border-b-2 mb-2 pb-1">
+		<div className="tracker__row border-b-2 mb-2 pb-1 md:py-2">
 			<div className="tracker__chart-buttons">
 				<button
 					className="inline-block bg-green-500 hover:bg-green-700 text-white py-1/2 px-1 rounded transition-colors text-base antialiased font-medium uppercase mr-2"
@@ -74,13 +74,13 @@ function Food({
 					{foodName}
 				</span>
 			</div>
-			<div className="flex flex-wrap">{checkmarks}</div>
-			<div className="grid place-items-center">
+			<div className="flex flex-wrap mb-2 md:mb-0">{checkmarks}</div>
+			<div className="grid m:place-items-center mb-1">
 				<p className="text-base inline-block">
 					<strong>Total:</strong> {servings >= 0 ? servings : 0}
 				</p>
 			</div>
-			<div className="grid place-items-center">
+			<div className="grid m:place-items-center mb-1">
 				<button onClick={handleDeleteFoodRow}>
 					<XButton />
 				</button>
