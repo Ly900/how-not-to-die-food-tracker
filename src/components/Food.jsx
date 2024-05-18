@@ -15,18 +15,10 @@ function Food({
 	function handleAddClick() {
 		servings = servings + 1;
 		increaseServings(foodName, servings);
-		srMessage(`1 ${foodName} ${action}`);
-		srMessage(`${servings} total ${foodName}`);
 	}
 	function handleRemoveClick() {
 		servings = servings - 1;
 		decreaseServings(foodName, servings);
-		if (servings < 0) {
-			srMessage(`No ${foodName} to remove`);
-		} else {
-			srMessage(`1 ${foodName} ${action}`);
-			srMessage(`${servings} total ${foodName}`);
-		}
 	}
 	function createCheckmarks(servings) {
 		if (servings > 0) {
