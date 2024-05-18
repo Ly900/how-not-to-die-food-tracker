@@ -125,8 +125,12 @@ function App() {
 		for (const keyName in localStorage) {
 			if (!localStorage.hasOwnProperty(keyName)) continue;
 			const neededMonth = `hntd_month_${month}`;
+			const neededFoodsList = `hntd_${month}_foods_list`;
 			if (keyName.indexOf(neededMonth) !== -1) {
 				localStorage.removeItem(neededMonth);
+			}
+			if (keyName.indexOf(neededFoodsList) !== -1) {
+				localStorage.removeItem(neededFoodsList);
 			}
 		}
 		const newMonths = storedMonths.filter((m) => m !== month);
