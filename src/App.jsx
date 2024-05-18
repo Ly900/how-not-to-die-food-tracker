@@ -169,6 +169,8 @@ function App() {
 			...jsonToRender,
 			[formJson['new-food'], 0],
 		]);
+		setFood(formJson['new-food']);
+		setDisplayNotification('addedNewFood');
 	}
 
 	return (
