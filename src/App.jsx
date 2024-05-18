@@ -193,6 +193,8 @@ function App() {
 		setJsonToRender(newServingsArr);
 		setFood(foodName);
 		setDisplayNotification('deletedFood');
+		const message = `You've deleted ${foodName}`;
+		srMessage(message);
 	}
 
 	function handleAddFoodClick(e) {
