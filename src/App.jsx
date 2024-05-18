@@ -180,7 +180,7 @@ function App() {
 			{step !== 'start' && (
 				<div className="text-center my-1">
 					<button
-						className="mb-3 inline-block bg-slate-500 hover:bg-slate-700 text-white py-2 px-4 rounded transition-colors text-lg antialiased font-medium uppercase"
+						className="tracker__button mb-3 inline-block bg-slate-500 hover:bg-slate-700 text-white py-2 px-4 rounded transition-colors text-lg antialiased font-medium uppercase"
 						onClick={() => handleStartOverClick()}
 					>
 						Start Over
@@ -245,7 +245,7 @@ function App() {
 							placeholder="Tacos"
 						/>
 						<button
-							className="inline-block bg-green-600 hover:bg-green-700 text-white py-1 px-2 rounded transition-colors text-base antialiased font-medium uppercase"
+							className="tracker__button inline-block bg-green-600 hover:bg-green-700 text-white py-1 px-2 rounded transition-colors text-base antialiased font-medium uppercase"
 							type="submit"
 						>
 							Submit
@@ -254,7 +254,7 @@ function App() {
 
 					<div className="tracker__user-options p-3">
 						<button
-							className="inline-block bg-green-500 hover:bg-green-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase my-2 mr-2"
+							className="tracker__button inline-block bg-green-500 hover:bg-green-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase my-2 mr-2"
 							onClick={() => {
 								handleSaveMonthClick();
 							}}
@@ -262,7 +262,7 @@ function App() {
 							Save Month
 						</button>
 						<button
-							className="inline-block bg-red-500 hover:bg-red-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase my-2"
+							className="tracker__button inline-block bg-red-500 hover:bg-red-700 py-2 px-2 rounded text-white transition-colors text-base antialiased font-medium uppercase my-2"
 							onClick={() => {
 								handleDeleteMonthClick();
 							}}
@@ -286,7 +286,7 @@ function App() {
 						storedMonths.map((month, i) => (
 							<button
 								key={i}
-								className="mb-3 inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded transition-colors text-lg antialiased font-medium"
+								className="tracker__button mb-3 inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded transition-colors text-lg antialiased font-medium"
 								onClick={() => handleLoadMonthClick(month)}
 							>
 								<span className="sr-only">Load </span>

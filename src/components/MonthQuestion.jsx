@@ -16,7 +16,7 @@ function MonthQuestion({ handleClick }) {
 					required
 				/>
 				<button
-					className="inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-3 rounded transition-colors text-base antialiased font-medium uppercase"
+					className="tracker__button inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-3 rounded transition-colors text-base antialiased font-medium uppercase"
 					type="submit"
 				>
 					Submit

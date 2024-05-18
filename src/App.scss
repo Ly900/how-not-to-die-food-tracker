@@ -20,6 +20,10 @@
 			align-items: center;
 		}
 	}
+	&__button:active {
+		position: relative;
+		top: 2px;
+	}
 }
 
 .sr-only {

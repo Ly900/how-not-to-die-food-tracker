@@ -57,13 +57,13 @@ function Food({
 		<div className="tracker__row border-b-2 mb-2 pb-1 md:py-2">
 			<div className="tracker__chart-buttons">
 				<button
-					className="inline-block bg-green-500 hover:bg-green-700 text-white py-1/2 px-1 rounded transition-colors text-base antialiased font-medium uppercase mr-2"
+					className="tracker__button inline-block bg-green-500 hover:bg-green-700 text-white py-1/2 px-1 rounded transition-colors text-base antialiased font-medium uppercase mr-2"
 					onClick={() => handleAddClick()}
 				>
 					Add <span className="sr-only">1 serving of {foodName}</span>
 				</button>
 				<button
-					className="inline-block bg-slate-500 hover:bg-slate-700 text-white py-1/2 px-1 rounded transition-colors text-base antialiased font-medium uppercase"
+					className="tracker__button inline-block bg-slate-500 hover:bg-slate-700 text-white py-1/2 px-1 rounded transition-colors text-base antialiased font-medium uppercase"
 					onClick={() => handleRemoveClick()}
 				>
 					Remove <span className="sr-only">1 serving of {foodName}</span>
@@ -80,8 +80,11 @@ function Food({
 					<strong>Total:</strong> {servings >= 0 ? servings : 0}
 				</p>
 			</div>
-			<div className="grid m:place-items-center mb-1">
-				<button onClick={handleDeleteFoodRow}>
+			<div className="tracker__button grid m:place-items-center mb-1">
+				<button
+					onClick={handleDeleteFoodRow}
+					className="tracker__delete-food-button"
+				>
 					<XButton />
 				</button>
 			</div>
