@@ -8,6 +8,7 @@
 
 .tracker {
 	$medium: 720px;
+	scroll-behavior: smooth;
 	&__user-settings,
 	&__saved-chart-heading {
 		font-family: 'Boogaloo', sans-serif;

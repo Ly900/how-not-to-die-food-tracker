@@ -21,11 +21,14 @@ function Header({ step }) {
 				<p className="mb-1 text-base text-center">
 					Learn more about How Not to Die at the following links:
 				</p>
-				<ul className="mb-3 text-base text-center gap-2 justify-center sm:flex">
+				<ul
+					className="tracker__info-links-list-container mb-3 text-base text-center gap-2 justify-center sm:flex"
+					tab-index="-1"
+				>
 					<li>
 						<a
 							href="https://www.amazon.com/How-Not-Die-Discover-Scientifically/dp/1250066115"
-							className="underline text-blue-600 hover:text-blue-800 font-medium"
+							className="tracker__info-link underline text-blue-600 hover:text-blue-800 font-medium"
 						>
 							Amazon.com
 						</a>{' '}
@@ -34,7 +37,7 @@ function Header({ step }) {
 					<li>
 						<a
 							href="https://nutritionfacts.org/book/how-not-to-die/"
-							className="underline text-blue-600 hover:text-blue-800 font-medium"
+							className="tracker__info-link underline text-blue-600 hover:text-blue-800 font-medium"
 						>
 							NutritionFacts.org
 						</a>{' '}
@@ -43,7 +46,7 @@ function Header({ step }) {
 					<li>
 						<a
 							href="https://www.goodreads.com/book/show/25663961-how-not-to-die"
-							className="underline text-blue-600 hover:text-blue-800 font-medium"
+							className="tracker__info-link underline text-blue-600 hover:text-blue-800 font-medium"
 						>
 							GoodReads
 						</a>

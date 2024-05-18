@@ -24,6 +24,14 @@ function App() {
 	const [negativeServings, setNegativeServings] = useState(false);
 	const [displayNotification, setDisplayNotification] = useState('');
 
+	document.addEventListener(
+		'focusin',
+		function () {
+			console.log('focused: ', document.activeElement);
+		},
+		true
+	);
+
 	const storedMonthsLoaded = useRef(false);
 
 	function getLocalStorageItems() {
@@ -101,7 +109,15 @@ function App() {
 		setStoredMonths(newMonths);
 	}
 
-	function handleLoadMonthClick(month) {
+	function setFocusTo(element) {
+		console.log('setFocusTo');
+		// element.setAttribute('tab-index', '-1');
+		element.focus();
+	}
+
+	function handleLoadMonthClick(e, month) {
+		e.preventDefault();
+		// console.log('e: ', e);
 		const neededData = [];
 		for (const keyName in localStorage) {
 			if (!localStorage.hasOwnProperty(keyName)) continue;
@@ -115,6 +131,19 @@ function App() {
 		setStep('chart');
 		setJsonToRender(neededData[0]);
 		setDisplayNotification('loadMonth');
+		const infoLinkListContainer = document.getElementById('tracker__month');
+		console.log('infoLinkListContainer: ', infoLinkListContainer);
+		// setFocusTo(monthText);
+		// infoLinkListContainer.setAttribute('tab-index', '-1');
+
+		infoLinkListContainer.scrollIntoView({
+			behavior: 'smooth',
+		});
+		// setTimeout(() => {
+		infoLinkListContainer.focus({ preventScroll: true });
+		// }, 1000);
+
+		// infoLinkListContainer.removeAttribute('tab-index');
 	}
 
 	function modifyJsonToRenderArr(foodName, newServings) {
@@ -289,7 +318,7 @@ function App() {
 							<button
 								key={i}
 								className="tracker__button mb-3 inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded transition-colors text-lg antialiased font-medium"
-								onClick={() => handleLoadMonthClick(month)}
+								onClick={(e) => handleLoadMonthClick(e, month)}
 							>
 								<span className="sr-only">Load </span>
 								{month} <span className="sr-only">data</span>
