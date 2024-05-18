@@ -208,6 +208,8 @@ function App() {
 		]);
 		setFood(formJson['new-food']);
 		setDisplayNotification('addedNewFood');
+		const message = `You've added a new food ${formJson['new-food']}`;
+		srMessage(message);
 	}
 	function srMessage(message) {
 		document.getElementById('alert').append(message);
