@@ -90,6 +90,14 @@ function App() {
 		srMessage('Daily Dozen foods chosen');
 	}
 
+	function handleCustomClick() {
+		console.log('handleCustomClick');
+		setFoodsList('Custom');
+		setStep('chart');
+		setJsonToRender([]);
+		srMessage('Custom foods chosen');
+	}
+
 	function handleStartOverClick() {
 		setMonth('');
 		setFoodsList('');
@@ -252,7 +260,10 @@ function App() {
 					)}
 
 					{step === 'foodsList' && (
-						<FoodsListQuestion handleDailyDozenClick={handleDailyDozenClick} />
+						<FoodsListQuestion
+							handleDailyDozenClick={handleDailyDozenClick}
+							handleCustomClick={handleCustomClick}
+						/>
 					)}
 				</div>
 			)}
