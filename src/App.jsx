@@ -110,6 +110,7 @@ function App() {
 	function handleSaveMonthClick() {
 		setDisplayNotification('saveMonth');
 		localStorage.setItem(`hntd_month_${month}`, JSON.stringify(jsonToRender));
+		localStorage.setItem(`hntd_${month}_foods_list`, JSON.stringify(foodsList));
 		const message = `Month ${month} saved`;
 		srMessage(message);
 		// If the month already exists in local storage, do not create a new month.
