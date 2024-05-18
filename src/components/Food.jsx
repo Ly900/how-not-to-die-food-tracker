@@ -66,7 +66,7 @@ function Food({
 			<div className="tracker__button grid m:place-items-center mb-1">
 				<button
 					onClick={handleDeleteFoodRow}
-					className="tracker__delete-food-button hover:scale-125 hover:transition-all duration:1000"
+					className="tracker__delete-food-button md:hover:scale-125 hover:transition-all duration:1000"
 				>
 					<span className="sr-only">Delete {`${foodName}`}</span>
 					<XButton />
