@@ -133,17 +133,10 @@ function App() {
 		setDisplayNotification('loadMonth');
 		const infoLinkListContainer = document.getElementById('tracker__month');
 		console.log('infoLinkListContainer: ', infoLinkListContainer);
-		// setFocusTo(monthText);
-		// infoLinkListContainer.setAttribute('tab-index', '-1');
-
 		infoLinkListContainer.scrollIntoView({
 			behavior: 'smooth',
 		});
-		// setTimeout(() => {
 		infoLinkListContainer.focus({ preventScroll: true });
-		// }, 1000);
-
-		// infoLinkListContainer.removeAttribute('tab-index');
 	}
 
 	function modifyJsonToRenderArr(foodName, newServings) {

@@ -1,6 +1,3 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useRef } from 'react';
 import Checkmark from './Checkmark';
 import XButton from './XButton';
 
