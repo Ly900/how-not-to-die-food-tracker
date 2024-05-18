@@ -56,7 +56,7 @@ function App() {
 		setJsonToRender(dailyDozenArr);
 	}, []);
 
-	function handleNewMonthClick() {
+	function handleStartClick() {
 		setStep('month');
 		srMessage('New month started. Step 1: Enter a new month.');
 	}
@@ -236,7 +236,7 @@ function App() {
 			{step !== 'chart' && (
 				<div className="tracker__questions mb-6 text-center">
 					{step === 'start' && (
-						<StartQuestion handleNewMonthClick={handleNewMonthClick} />
+						<StartQuestion handleStartClick={handleStartClick} />
 					)}
 
 					{step === 'month' && (
