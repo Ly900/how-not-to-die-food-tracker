@@ -6,7 +6,7 @@
 
 ![image](https://ly900.github.io/how-not-to-die-food-tracker/assets/how-not-to-die2.png)
 
-Tools/Tech:
+**Tools/Tech:**
 
 - Vite (^5.2.0)
 - React (^18.2.0)
@@ -14,7 +14,7 @@ Tools/Tech:
 - Flexbox
 - CSS grid
 
-Functionality:
+**Functionality:**
 
 - Create new month for tracking healthy food intake.
 - Load Daily Dozen recommended foods.
@@ -26,4 +26,4 @@ Functionality:
 - Delete data from local storage.
 - Screenreader announcements (testing most consistent in Safari Mac VoiceOver).
 
-Created May 2024
+**Created** May 2024
