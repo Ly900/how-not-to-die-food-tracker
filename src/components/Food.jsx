@@ -7,16 +7,10 @@ function Food({
 	increaseServings,
 	decreaseServings,
 	deleteFoodRow,
+	srMessage,
 }) {
 	const foodName = food[0];
 	let servings = food[1];
-
-	function srMessage(message) {
-		document.getElementById('alert').append(message);
-		setTimeout(() => {
-			document.getElementById('alert').innerHTML = '';
-		}, 500);
-	}
 
 	function handleAddClick() {
 		servings = servings + 1;

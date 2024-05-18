@@ -24,13 +24,13 @@ function App() {
 	const [negativeServings, setNegativeServings] = useState(false);
 	const [displayNotification, setDisplayNotification] = useState('');
 
-	document.addEventListener(
-		'focusin',
-		function () {
-			console.log('focused: ', document.activeElement);
-		},
-		true
-	);
+	// document.addEventListener(
+	// 	'focusin',
+	// 	function () {
+	// 		console.log('focused: ', document.activeElement);
+	// 	},
+	// 	true
+	// );
 
 	const storedMonthsLoaded = useRef(false);
 
@@ -201,6 +201,12 @@ function App() {
 		setFood(formJson['new-food']);
 		setDisplayNotification('addedNewFood');
 	}
+	function srMessage(message) {
+		document.getElementById('alert').append(message);
+		setTimeout(() => {
+			document.getElementById('alert').innerHTML = '';
+		}, 500);
+	}
 
 	return (
 		<>
@@ -255,6 +261,7 @@ function App() {
 									increaseServings={increaseServings}
 									decreaseServings={decreaseServings}
 									deleteFoodRow={deleteFoodRow}
+									srMessage={srMessage}
 								/>
 							);
 						})}
