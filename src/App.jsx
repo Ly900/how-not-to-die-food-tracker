@@ -72,7 +72,7 @@ function App() {
 		srMessage(message);
 	}
 
-	function handleFoodsListClick() {
+	function handleDailyDozenClick() {
 		setFoodsList('Daily Dozen');
 		setStep('chart');
 		const dailyDozenArr = dailyDozen.dailyDozen;
@@ -80,6 +80,7 @@ function App() {
 			return [foodArr[0], 0];
 		});
 		setJsonToRender(newServingsArr);
+		srMessage('Daily Dozen foods chosen');
 	}
 
 	function handleStartOverClick() {
@@ -241,7 +242,7 @@ function App() {
 					)}
 
 					{step === 'foodsList' && (
-						<FoodsListQuestion handleClick={handleFoodsListClick} />
+						<FoodsListQuestion handleDailyDozenClick={handleDailyDozenClick} />
 					)}
 				</div>
 			)}

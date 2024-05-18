@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
-function FoodsListQuestion({ handleClick }) {
+function FoodsListQuestion({ handleDailyDozenClick, srMessage }) {
 	const [customError, setCustomError] = useState(false);
 
 	function handleCustomClick() {
 		setCustomError(true);
+		srMessage('Custom functionality not yet available');
 	}
 	return (
 		<div className="tracker__step2-container bg-slate-100 p-4 pb-6 text-lg">
@@ -13,7 +14,7 @@ function FoodsListQuestion({ handleClick }) {
 			<div className="tracker__option-buttons inline-flex flex-col mb-3">
 				<button
 					className="mb-3 inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded transition-colors text-lg antialiased font-medium uppercase"
-					onClick={() => handleClick('dailyDozen')}
+					onClick={() => handleDailyDozenClick('dailyDozen')}
 				>
 					Daily Dozen
 				</button>
