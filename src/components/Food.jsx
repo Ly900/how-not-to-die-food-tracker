@@ -82,6 +82,7 @@ function Food({
 					onClick={handleDeleteFoodRow}
 					className="tracker__delete-food-button hover:scale-125 hover:transition-all duration:1000"
 				>
+					<span className="sr-only">Delete {`${foodName}`}</span>
 					<XButton />
 				</button>
 			</div>
