@@ -3,9 +3,8 @@ import './Header.scss';
 function Header({ step }) {
 	return (
 		<header
-			className={`flex flex-col items-center ${
-				step === 'chart' ? 'mb-0' : 'mb-5'
-			}`}
+			className={`flex flex-col items-center ${step === 'chart' ? 'mb-0' : 'mb-5'
+				}`}
 		>
 			<div className="flex mb-2">
 				<h1
@@ -23,7 +22,7 @@ function Header({ step }) {
 				</p>
 				<ul
 					className="tracker__info-links-list-container mb-3 text-base text-center gap-2 justify-center sm:flex"
-					tab-index="-1"
+					tabIndex="-1"
 				>
 					<li>
 						<a
