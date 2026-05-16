@@ -197,13 +197,29 @@ function App() {
 		const form = e.target;
 		const formData = new FormData(form);
 		const formJson = Object.fromEntries(formData.entries());
+		const newFoodName = formJson['new-food'].trim();
+
+		if (!newFoodName) {
+			setDisplayNotification('emptyFood');
+			return;
+		}
+
+		const isDuplicate = jsonToRender.some(
+			(food) => food.name.toLowerCase() === newFoodName.toLowerCase()
+		);
+		if (isDuplicate) {
+			setFood(newFoodName);
+			setDisplayNotification('duplicateFood');
+			return;
+		}
+
 		setJsonToRender((previousJsonToRender) => [
 			...previousJsonToRender,
-			{ name: formJson['new-food'], servings: 0 },
+			{ name: newFoodName, servings: 0 },
 		]);
-		setFood(formJson['new-food']);
+		setFood(newFoodName);
 		setDisplayNotification('addedNewFood');
-		const message = `You've added a new food ${formJson['new-food']}`;
+		const message = `You've added a new food ${newFoodName}`;
 		srMessage(message);
 		const newFoodInput = document.getElementById('new-food');
 		newFoodInput.value = '';

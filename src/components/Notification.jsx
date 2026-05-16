@@ -41,6 +41,14 @@ function Notification({ displayNotification, food, month, negativeServings }) {
 					You've deleted <strong>{food}</strong>.
 				</p>
 			)}
+			{displayNotification === 'emptyFood' && (
+				<p className="text-red-800">Please enter a food name.</p>
+			)}
+			{displayNotification === 'duplicateFood' && (
+				<p className="text-red-800">
+					<strong>{food}</strong> is already in your list.
+				</p>
+			)}
 		</>
 	);
 }
