@@ -83,15 +83,14 @@ function App() {
 		setFoodsList('Daily Dozen');
 		setStep('chart');
 		const dailyDozenArr = dailyDozen.dailyDozen;
-		const newServingsArr = dailyDozenArr.map((foodArr) => {
-			return [foodArr[0], 0];
+		const newServingsArr = dailyDozenArr.map((food) => {
+			return { name: food.name, servings: 0 };
 		});
 		setJsonToRender(newServingsArr);
 		srMessage('Daily Dozen foods chosen');
 	}
 
 	function handleCustomClick() {
-		console.log('handleCustomClick');
 		setFoodsList('Custom');
 		setStep('chart');
 		setJsonToRender([]);
@@ -168,19 +167,17 @@ function App() {
 	}
 
 	function modifyJsonToRenderArr(foodName, newServings) {
-		const newServingsArr = jsonToRender.map((foodArr) => {
-			if (foodArr[0] === foodName) {
-				foodArr[1] = newServings;
-				if (foodArr[1] < 0) {
-					foodArr[1] = 0;
+		const newServingsArr = jsonToRender.map((food) => {
+			if (food.name === foodName) {
+				const updatedServings = newServings < 0 ? 0 : newServings;
+				if (newServings < 0) {
 					setNegativeServings(true);
 				} else {
 					setNegativeServings(false);
 				}
-				return foodArr;
-			} else {
-				return foodArr;
+				return { ...food, servings: updatedServings };
 			}
+			return food;
 		});
 		return newServingsArr;
 	}
@@ -210,11 +207,7 @@ function App() {
 	}
 
 	function deleteFoodRow(foodName) {
-		const newServingsArr = jsonToRender.filter((foodArr) => {
-			if (foodArr[0] !== foodName) {
-				return foodArr;
-			}
-		});
+		const newServingsArr = jsonToRender.filter((food) => food.name !== foodName);
 		setJsonToRender(newServingsArr);
 		setFood(foodName);
 		setDisplayNotification('deletedFood');
@@ -228,8 +221,8 @@ function App() {
 		const formData = new FormData(form);
 		const formJson = Object.fromEntries(formData.entries());
 		setJsonToRender((previousJsonToRender) => [
-			...jsonToRender,
-			[formJson['new-food'], 0],
+			...previousJsonToRender,
+			{ name: formJson['new-food'], servings: 0 },
 		]);
 		setFood(formJson['new-food']);
 		setDisplayNotification('addedNewFood');

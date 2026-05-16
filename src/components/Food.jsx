@@ -9,8 +9,8 @@ function Food({
 	deleteFoodRow,
 	srMessage,
 }) {
-	const foodName = food[0];
-	let servings = food[1];
+	const foodName = food.name;
+	let servings = food.servings;
 
 	function handleAddClick() {
 		servings = servings + 1;
@@ -22,7 +22,7 @@ function Food({
 	}
 	function createCheckmarks(servings) {
 		if (servings > 0) {
-			let checkmarksArr = new Array(servings);
+			let checkmarksArr = [];
 
 			for (let i = 0; i < servings; i++)
 				checkmarksArr.push(<Checkmark key={i} />);

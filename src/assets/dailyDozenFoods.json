@@ -1,16 +1,16 @@
 {
 	"dailyDozen": [
-		["Beans", 0],
-		["Berries", 0],
-		["Other Fruits", 0],
-		["Cruciferous Veggie", 0],
-		["Greens", 0],
-		["Other Veggie", 0],
-		["Flaxseed", 0],
-		["Nuts and Seeds", 0],
-		["Turmeric", 0],
-		["Whole Grains", 0],
-		["Water or Tea", 0],
-		["Exercise", 0]
+		{ "name": "Beans", "servings": 0 },
+		{ "name": "Berries", "servings": 0 },
+		{ "name": "Other Fruits", "servings": 0 },
+		{ "name": "Cruciferous Veggie", "servings": 0 },
+		{ "name": "Greens", "servings": 0 },
+		{ "name": "Other Veggie", "servings": 0 },
+		{ "name": "Flaxseed", "servings": 0 },
+		{ "name": "Nuts and Seeds", "servings": 0 },
+		{ "name": "Turmeric", "servings": 0 },
+		{ "name": "Whole Grains", "servings": 0 },
+		{ "name": "Water or Tea", "servings": 0 },
+		{ "name": "Exercise", "servings": 0 }
 	]
 }
