@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 import Header from './components/Header';
 import StartQuestion from './components/StartQuestion';
@@ -24,30 +22,19 @@ function App() {
 	const [negativeServings, setNegativeServings] = useState(false);
 	const [displayNotification, setDisplayNotification] = useState('');
 
-	const storedMonthsLoaded = useRef(false);
-
 	function getLocalStorageItems() {
-		const storedMonths = [];
+		const months = [];
 		Object.keys(localStorage).forEach((keyName) => {
 			if (keyName.includes('hntd_month')) {
 				const cleanMonth = keyName.split('_')[2];
-				storedMonths.push(cleanMonth);
+				months.push(cleanMonth);
 			}
 		});
-		setStoredMonths(storedMonths);
+		setStoredMonths(months);
 	}
 
 	useEffect(() => {
-		console.log('useEffect ran');
-		console.log('storedMonthsLoaded.current: ', storedMonthsLoaded.current);
-		if (!storedMonthsLoaded.current) {
-			storedMonthsLoaded.current = true;
-			return;
-		}
-		const dailyDozenArr = dailyDozen.dailyDozen;
-		console.log('dailyDozenArr: ', dailyDozenArr);
 		getLocalStorageItems();
-		setJsonToRender(dailyDozenArr);
 	}, []);
 
 	function srMessage(message) {
