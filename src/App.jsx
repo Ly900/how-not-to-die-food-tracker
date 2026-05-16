@@ -120,30 +120,21 @@ function App() {
 		srMessage(message);
 	}
 
-	function handleLoadMonthClick(month) {
-		const neededData = [];
-		let neededFoodsListData;
-		for (const keyName in localStorage) {
-			if (!localStorage.hasOwnProperty(keyName)) continue;
-			const neededMonth = `hntd_month_${month}`;
-			if (keyName.indexOf(neededMonth) !== -1) {
-				neededData.push(JSON.parse(localStorage[keyName]));
-			}
-			const neededFoodsList = `hntd_${month}_foods_list`;
-			if (keyName.indexOf(neededFoodsList) !== -1) {
-				neededFoodsListData = JSON.parse(localStorage[keyName]);
-			}
-		}
-		setFoodsList(neededFoodsListData);
+	function handleLoadMonthClick(e, month) {
+		const rawData = localStorage.getItem(`hntd_month_${month}`);
+		const rawFoodsList = localStorage.getItem(`hntd_${month}_foods_list`);
+
+		if (!rawData) return;
+
+		setJsonToRender(JSON.parse(rawData));
+		setFoodsList(JSON.parse(rawFoodsList));
 		setMonth(month);
 		setStep('chart');
-		setJsonToRender(neededData[0]);
 		setDisplayNotification('loadMonth');
 		setTimeout(() => {
-			const infoLinkListContainer = document.getElementById(
-				'tracker__month-wrapper'
-			);
-			infoLinkListContainer.focus({ preventScroll: true });
+			document
+				.getElementById('tracker__month-wrapper')
+				?.focus({ preventScroll: true });
 		}, 500);
 	}
 
