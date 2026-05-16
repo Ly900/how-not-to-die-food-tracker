@@ -120,8 +120,7 @@ function App() {
 		srMessage(message);
 	}
 
-	function handleLoadMonthClick(e, month) {
-		e.preventDefault();
+	function handleLoadMonthClick(month) {
 		const neededData = [];
 		let neededFoodsListData;
 		for (const keyName in localStorage) {
