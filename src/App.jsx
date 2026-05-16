@@ -24,34 +24,28 @@ function App() {
 	const [negativeServings, setNegativeServings] = useState(false);
 	const [displayNotification, setDisplayNotification] = useState('');
 
-	// document.addEventListener(
-	// 	'focusin',
-	// 	function () {
-	// 		console.log('focused: ', document.activeElement);
-	// 	},
-	// 	true
-	// );
-
 	const storedMonthsLoaded = useRef(false);
 
 	function getLocalStorageItems() {
 		const storedMonths = [];
-		for (const keyName in localStorage) {
-			if (!localStorage.hasOwnProperty(keyName)) continue;
-			if (keyName.indexOf('hntd_month') !== -1) {
+		Object.keys(localStorage).forEach((keyName) => {
+			if (keyName.includes('hntd_month')) {
 				const cleanMonth = keyName.split('_')[2];
 				storedMonths.push(cleanMonth);
 			}
-		}
+		});
 		setStoredMonths(storedMonths);
 	}
 
 	useEffect(() => {
+		console.log('useEffect ran');
+		console.log('storedMonthsLoaded.current: ', storedMonthsLoaded.current);
 		if (!storedMonthsLoaded.current) {
 			storedMonthsLoaded.current = true;
 			return;
 		}
 		const dailyDozenArr = dailyDozen.dailyDozen;
+		console.log('dailyDozenArr: ', dailyDozenArr);
 		getLocalStorageItems();
 		setJsonToRender(dailyDozenArr);
 	}, []);
