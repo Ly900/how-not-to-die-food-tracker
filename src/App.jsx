@@ -149,15 +149,10 @@ function App() {
 	}
 
 	function modifyJsonToRenderArr(foodName, newServings) {
+		setNegativeServings(newServings < 0);
 		const newServingsArr = jsonToRender.map((food) => {
 			if (food.name === foodName) {
-				const updatedServings = newServings < 0 ? 0 : newServings;
-				if (newServings < 0) {
-					setNegativeServings(true);
-				} else {
-					setNegativeServings(false);
-				}
-				return { ...food, servings: updatedServings };
+				return { ...food, servings: newServings < 0 ? 0 : newServings };
 			}
 			return food;
 		});
