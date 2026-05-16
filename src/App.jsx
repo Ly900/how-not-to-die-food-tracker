@@ -38,9 +38,10 @@ function App() {
 	}, []);
 
 	function srMessage(message) {
-		document.getElementById('alert').append(message);
+		const alertEl = document.getElementById('alert');
+		alertEl.textContent = message;
 		setTimeout(() => {
-			document.getElementById('alert').innerHTML = '';
+			alertEl.textContent = '';
 		}, 500);
 	}
 
@@ -97,7 +98,7 @@ function App() {
 		if (storedMonths.includes(month)) {
 			return;
 		}
-		setStoredMonths((prevStoredMonths) => [...storedMonths, month]);
+		setStoredMonths((prevStoredMonths) => [...prevStoredMonths, month]);
 	}
 
 	function handleDeleteMonthClick() {
@@ -267,10 +268,10 @@ function App() {
 			{step === 'chart' && (
 				<>
 					<div className="tracker__chart p-3">
-						{jsonToRender.map((food, i) => {
+						{jsonToRender.map((food) => {
 							return (
 								<Food
-									key={i}
+									key={food.name}
 									action={action}
 									food={food}
 									increaseServings={increaseServings}
@@ -334,9 +335,9 @@ function App() {
 
 				<div className="tracker__month-btns-container flex gap-2 flex-wrap">
 					{storedMonths.length > 0 &&
-						storedMonths.map((month, i) => (
+						storedMonths.map((month) => (
 							<button
-								key={i}
+								key={month}
 								className="tracker__button mb-3 inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded transition-colors text-lg antialiased font-medium"
 								onClick={(e) => handleLoadMonthClick(e, month)}
 							>
